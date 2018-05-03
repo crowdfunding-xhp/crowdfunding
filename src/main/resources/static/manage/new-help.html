@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html id='ng-app'>
+
+	<head>
+		<title title>众筹网-新手帮助</title>
+		<meta charset="utf-8" />
+
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=11">
+		<link rel="shortcut icon" type="image/png" href="http://zcs1.ncfstatic.com/v3/static/images/icon/title.png?v=" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<script type="text/javascript" src="js/common.js"></script>
+		<meta property="qc:admins" content="255367746162076730756375" />
+		<script type="text/javascript" src="js/sso-lib.js"></script>
+		<!--layui使用-->
+		<script src="layui/layui.js"></script>
+		<script src="js/jquery-2.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
+		<link rel="stylesheet" href="css/bwizard.min.css">
+		<link rel="stylesheet" href="layui/css/layui.css" />
+		<!--登录-->
+		<script src="js/login/main.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/login/myLogin.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+		<link rel="stylesheet" href="css/login/main.css">
+		<link rel="stylesheet" href="css/login/style.css">
+		<script>
+			$(window).ready(function() {
+				var userInfo = $.cookie("userInfo");
+				if(userInfo) {
+					userInfo = eval("(" + userInfo + ")");
+					$("input[name=Uid]").val(userInfo.Uid);
+					$("[name=Uimage]").attr("src", userInfo.Uimage);
+					$("input[name=Unickname]").val(userInfo.Unickname);
+					$("input[name=Usex]:radio").each(function() {
+						if(userInfo.Usex == this.value) {
+							this.checked = "checked";
+						}
+					});
+					$("input[name=Uphone]").val(userInfo.Uphone);
+				}
+
+			})
+		</script>
+	</head>
+
+	<body>
+		<!-- 网站header begin -->
+		<div class="siteHTopBox" id="siteHTopBox">
+			<div class="mainInnerBox">
+				<div class="siteHtelBox">
+					官方咨询电话<span>000-010-0000</span>
+				</div>
+				<!-- 手机app && 联系电话 begin -->
+				<div class="siteHRight">
+					<!--<a href="subject.html" class="siteH_feedbackA btn_ALink" target="_blank">专题</a>
+					<a href="javascript:;" class="siteH_feedbackA btn_ALink" id="RS_yjfkBox">意见反馈</a>-->
+					<a href="new-help.html" class="siteHCodeB btn_ALink" target="_blank">帮助中心</a>
+					<a href="manager/login.jsp" class="siteHCodeB btn_ALink">管理员登陆</a>
+				</div>
+				<!-- 手机app && 联系电话 end -->
+			</div>
+		</div>
+		<div class="siteMTopBox">
+			<div class="mainInnerBox clearfix relative">
+				<a href="index.html" class="siteMIndexA"> <img src="picture/1462795454.png" />
+				</a>
+				<div class="siteHNavBox clearfix">
+					<div class="siteHNavItem">
+						<a href="index.html" class="siteHNavItemA">首&nbsp;&nbsp;页</a>
+					</div>
+				</div>
+
+				<a href="javascript:;" class="siteM_fqBtn btn_ALink js-checkLogin"><i></i>发起众筹</a>
+
+				<!-- 未登录状态 begin -->
+				<div class="siteHLoginBox clearfix" id="notLogin">
+
+					<nav class="main_nav">
+						<ul>
+							<li>
+								<a class="cd-signin" href="javascript:;">登录</a> <span class="line">yong</span>
+								<a class="cd-signup" href="javascript:;">注册</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<!--弹出层 start-->
+				<div class="cd-user-modal">
+					<div class="cd-user-modal-container">
+
+						<div id="notice_wrap">
+							<div class="notice">
+								<span></span>
+							</div>
+						</div>
+
+						<ul class="cd-switcher">
+							<li>
+								<a href="javascript:;">用户登录</a>
+							</li>
+							<li>
+								<a href="javascript:;">注册新用户</a>
+							</li>
+						</ul>
+
+						<div id="cd-login">
+							<!-- 登录表单 -->
+							<form class="cd-form" action="" method="post">
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-username" for="signin_username">用户名</label>
+									<input class="full-width has-padding has-border" required="required" id="signin_username" name="signin_username" type="text" placeholder="输入用户名">
+
+								</p>
+
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-password" for="signin_password">密码</label>
+
+									<input class="full-width has-padding has-border" required="required" id="signin_password" name="signin_password" type="password" placeholder="输入密码">
+									<!--<p class="tip"></p>-->
+								</p>
+
+								<p class="fieldset">
+									<input type="checkbox" name="remember_me" id="remember_me" checked="checked"> <label for="remember_me">记住登录状态</label> <span class="login_red"></span>
+								</p>
+								<p class="fieldset">
+									<input id="loginBtn" class="full-width2 submit" name="onsubmit" type="submit" value="登 录">
+								</p>
+							</form>
+						</div>
+
+						<div id="cd-signup">
+							<!-- 注册表单 -->
+							<form class="cd-form">
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-username" for="signup-username">用户名</label>
+									<input class="full-width has-padding has-border" name="signup_username" required id="signup-username" type="text" placeholder="输入用户名">
+								</p>
+
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-email" for="signup-email">邮箱</label> <input class="full-width has-padding has-border" name="signup_email" required id="signup-email" type="email" placeholder="输入mail">
+								</p>
+
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-password" for="signup-password">密码</label>
+									<input class="full-width has-padding has-border" name="signup_password" required id="signup-password" type="password" placeholder="输入密码">
+								</p>
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-password" for="signup-repassword">确认密码</label>
+									<input class="full-width has-padding has-border" name="signup_repassword" required id="signup-repassword" type="password" placeholder="确认密码">
+								</p>
+
+								<p class="fieldset">
+									<span class="tip" style="top: auto;"></span> <input type="checkbox" name="accept_terms" required id="accept-terms">
+									<label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+									<span class="logup_red"></span>
+								</p>
+
+								<p class="fieldset">
+									<input id="signupBtn" class="full-width2" type="submit" value="注册新用户">
+								</p>
+							</form>
+
+						</div>
+
+						<a href="#0" class="cd-close-form">关闭</a>
+					</div>
+				</div>
+
+				<!--弹出层 end-->
+				<!-- 未登录状态 end -->
+
+				<!-- 登录状态 begin -->
+				<div class="siteHCountBox" id="isLogin">
+					<div class="index-avatar fl">
+						<img src="" alt="头像"><i></i>
+					</div>
+					<div class="siteHCountInner">
+						<!-- <a href="/zc/#/user-center/reward-order" class="grzx btn_ALink" target="_self">个人中心</a> -->
+						<a href="userMessage.html" class="nickname" target="_blank"></a>
+						<!--
+                        <a href="" class="wdlc btn_ALink" target="_blank"><i></i>
+							<font>我的理财</font>
+						</a>
+						-->
+						<a href="userMessage.html" class="guanzhu siteIlB_item btn_ALink" target="_blank"><i></i>个人中心<b></b></a>
+						<a href="myorders.html" class="wddd btn_ALink" target="_self"><i></i>我的订单</a>
+
+						<a href="projManage.html" class="wdfq btn_ALink" target="_self"><i></i>我的发起</a>
+						<!--<a href="" class="wdhb btn_ALink" target="_self"><i></i>我的红包</a>
+						<a href="" class="xiaoxi siteIlB_item btn_ALink" target="_blank"><i></i>消息<b ng-bind="user.commentsNum+user.letterNum+user.systemMessNum"></b></a>
+						<a href="" class="sz btn_ALink" target="_self"><i></i>设置</a>-->
+						<a href="javascript:;" class="quit btn_ALink"><i></i>退出</a>
+
+						<!--							<a href="-->
+						<!--" class="quit btn_ALink"><i></i>退出</a>-->
+					</div>
+				</div>
+				<a href="projManage.html" class="wdfq btn_ALink my-zc fr glzc" target="_blank"><i></i>管理众筹</a>
+				<!-- 登录状态 end -->
+
+			</div>
+		</div>
+
+		<!--搜索框效果-->
+		<script>
+			$(document).ready(function() {
+				var hint = new InputHinter({
+					container: 'search-box',
+					id: "searchInput"
+				});
+				$('#searchBtn').click(function() {
+					var $input = $('#searchInput');
+					//window.location.href = "search-list.html?searchVal=" + hint.encodeKw($.trim($input.val()) || $input.attr('placeholder'));
+
+					var getUrlParam = function(name) {
+						var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+						var r = window.location.search.substr(1).match(reg);
+						if(r != null)
+							return decodeURI(r[2]);
+						return null;
+					}
+					var searchVal = getUrlParam('searchVal');
+
+				});
+				$('#searchInput').focus(function() {
+					setTimeout(function() {
+						$('#search-box').addClass("siteMSearch-focus")
+					}, 1)
+				})
+				$('#searchInput').blur(function() {
+					setTimeout(function() {
+						$('#search-box').removeClass("siteMSearch-focus")
+					}, 1)
+				});
+
+			});
+			var showCode = '';
+		</script>
+		<!-- 意见反馈弹层 begin -->
+		<div class="siteFixMask" id="siteFixMask"></div>
+		<div class="yjfkWrap" id="yjfkWrap">
+			<div class="yjfkHeader">意见反馈
+				<a href="###" class="yjfk_closeA" id="yjfk_closeA"></a>
+			</div>
+			<div class="yjfkConBox">
+				<div class="yjfk_placeHBox">
+					<textarea class="yjfkTextArea" id="yjfkTextArea" placeholder="有什么不好用的地方，请告诉我们，我们会努力做的更好！"></textarea>
+					<span class="yjfk_placeHText">有什么不好用的地方，请告诉我们，我们会努力做的更好！</span>
+				</div>
+				<div class="yjfk_placeHBox">
+					<input type="text" class="yjfkInput" placeholder="您的联系方式，电话／qq／邮箱（选填）" />
+					<span class="yjfk_placeHText" style="top:9px\0\11;">您的联系方式，电话／qq／邮箱（选填）</span>
+				</div>
+				<p class="yjfk_errorP" id="yjfk_errorP">请输入意见反馈内容！</p>
+				<div class="yjfk_btnBox">
+					<input type="button" class="yjfkSubmit" id="yjfkSubmit" value="提交" />
+					<input type="button" class="yjfkCancel" id="yjfkCancel" value="取消" />
+				</div>
+			</div>
+		</div>
+		<!-- 意见反馈弹层 end -->
+
+		<!-- 网站header end -->
+		<style>
+			body {
+				background-color: #F3F3F3
+			}
+			
+			.list-item {
+				width: 230px;
+				height: 350px;
+				border: 1px solid #e4e4e4;
+				overflow: hidden;
+			}
+			
+			.list-item a {}
+			
+			.list-item a.item-figure {
+				display: block;
+				width: 230px;
+				height: 175px;
+				overflow: hidden;
+			}
+			
+			.list-item a img {
+				width: 230px;
+				height: 175px;
+				-webkit-transition: all 0.3s ease-out;
+				-ms-transition: all 0.3s ease-out;
+				-moz-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+			}
+			
+			.list-item a:hover img {
+				-webkit-transform: scale(1.04);
+				-moz-transform: scale(1.04);
+				-o-transform: scale(1.04);
+				transform: scale(1.04);
+			}
+			
+			.list-item .z-lump {
+				padding: 0 10px 15px 10px;
+				border-bottom: 1px solid #e4e4e4;
+			}
+			
+			.list-item .z-lump h2 {
+				font-size: 14px;
+				font-weight: bold;
+				padding: 10px 0 15px 0;
+				height: 34px;
+				margin-bottom: 11px;
+				overflow: hidden;
+			}
+			
+			.list-item .z-lump h2 a {
+				-webkit-transition: all 0.8s ease;
+				-moz-transition: all 0.8s ease;
+				-o-transition: all 0.8s ease;
+				transition: all 0.8s ease;
+			}
+			
+			.list-item .z-lump h2 a:hover {
+				color: #666;
+			}
+			
+			.list-item .z-lump p.z-raising {
+				font-size: 12px;
+				color: #999;
+			}
+			
+			.list-item .z-lump p.z-raising em {
+				font-size: 14px;
+				color: #000;
+				font-weight: bold;
+			}
+			
+			.list-item .z-lump p.z-raising i {
+				font-size: 14px;
+				color: #000;
+				font-weight: bold;
+			}
+			
+			.list-item .z-lump .progress-bar {
+				width: 208px;
+				height: 10px;
+				line-height: 0px;
+				font-size: 0px;
+				background: #eaeaea;
+				overflow: hidden;
+				margin: 4px 0;
+			}
+			
+			.list-item .z-lump .progress-bar span {
+				background: #55acef;
+			}
+			
+			.list-item .z-lump .progress-bar span.progress {
+				height: 10px;
+				line-height: 0px;
+				font-size: 0px;
+				display: block;
+			}
+			
+			.list-item .z-lump .item-rate span.rate1 {
+				float: left;
+				color: #333;
+			}
+			
+			.list-item .z-lump .item-rate span.rate2 {
+				float: right;
+				color: #999;
+			}
+			
+			.list-item .z-assist {
+				line-height: 25px;
+				padding: 0 10px;
+			}
+			
+			.list-item .z-assist a {
+				color: #666;
+				padding: 0 10px 0 15px;
+				display: inline;
+			}
+			
+			.list-item .z-assist a.assist1 {
+				background: url(images/s-gf_01_2.png) no-repeat -1px 1px;
+			}
+			
+			.list-item .z-assist a.assist1:hover {
+				color: #ff5001;
+				background: url(images/s-gf_07_2.png) no-repeat -1px 1px;
+			}
+			
+			.list-item .z-assist a.assist2 {
+				background: url(images/s-gf_03_2.png) no-repeat -1px 1px;
+			}
+			
+			.list-item .z-assist a.assist2:hover {
+				color: #ff5001;
+				background: url(images/s-gf_08_2.png) no-repeat -1px 1px;
+			}
+			
+			li {
+				list-style: none
+			}
+		</style>
+
+		<!--main static-->
+		<div style=" width:1250px; margin:0 auto; height:1130px;overflow:hidden; position:relative;  background-color:#FFFFFF;">
+			<!-- 图片widget -->
+			<div style="position: absolute;
+             top: 0px;
+             left:0px;
+             z-index: 5             ">
+
+				<img src="picture/c6be144b186af0cf12bc5700371be91f_2.png">
+			</div>
+			<div style="position: absolute;
+             top: 651px;
+             left:84px;
+             z-index: 0             ">
+
+				<img src="picture/ab0b02e097326580a1100448f0bf1f0a_2.png">
+			</div>
+
+			<!-- 项目widget -->
+
+		</div>
+		<script>
+			if(document.body.clientWidth < 1600) {
+				$("#imglarge").attr("width", document.body.clientWidth);
+			}
+		</script>
+		<!--main end-->
+		<!-- 网站Footer begin -->
+		<!--悬浮框-->
+
+		<!--悬浮框 end-->
+
+		<div class="SiteGoTopBox">
+			<a href="javascript:;" class="btn_ALink" id="SiteGoTopBtn"></a>
+		</div>
+		<div class="siteFooterBox">
+			<div class="mainInnerBox">
+				<div class="siteMFooter">
+					<!--<div class="siteMFooterABox">
+						<a href="http://www.zhongchou.com/help-index" rel="nofollow" class="site_hoverCss3A" target="_blank">关于我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-contact" rel="nofollow" class="site_hoverCss3A" target="_blank">联系我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-term" rel="nofollow" class="site_hoverCss3A" target="_blank">服务协议</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-specification" rel="nofollow" class="site_hoverCss3A" target="_blank">项目发起规范</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-license" rel="nofollow" class="site_hoverCss3A" target="_blank">公司资质</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-center" class="site_hoverCss3A" target="_blank">帮助中心</a>
+						<!--					<a href="-->
+					<!--" class="site_hoverCss3A" target="_blank">合作专区</a>
+					</div>-->
+					<!--<div class="siteMFooter_gzwmBox siteIlB_box">
+					<span class="siteIlB_item">关注我们:</span>
+					<a href="http://e.weibo.com/zhongchouwang2013" rel="nofollow" class="wb siteIlB_item" target="_blank"></a>
+					<a href="http://user.qzone.qq.com/2357291729" rel="nofollow" class="qq siteIlB_item" target="_blank"></a>
+					<a href="http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BC%97%E7%AD%B9%E7%BD%91" rel="nofollow" class="tb siteIlB_item" target="_blank"></a>
+					<a href="http://www.douban.com/people/zhongchou_cn/" rel="nofollow" class="db siteIlB_item" target="_blank"></a>
+				</div>-->
+				</div>
+			</div>
+			<div class="siteBFooter">
+				<p class="siteBFooter_p">©2017 牛逼哄哄有限公司 47.94.110.76 版权所有 最终解释权归本组所有</p>
+			</div>
+		</div>
+		<!-- 网站Footer end -->
+	</body>
+
+</html>

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: crowdfunding
+  profiles:
+    active: dev

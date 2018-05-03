@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html id='ng-app'>
+<head>
+	<title title>众筹网-专题聚合页</title>
+	<meta charset="utf-8"/>
+
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="renderer" content="webkit"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=11">
+	<!-- <link rel="shortcut icon"  type="image/png" href="http://zcs7.ncfstatic.com/v3/static/images/icon/title.png?v=" /> -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- <meta property="qc:admins" content="255367746162076730756375" /> -->
+	<!--<script type="text/javascript" src="js/sso-lib.js"></script>-->
+
+	<!--登录-->
+	<script src="js/login/main.js"></script>
+	<link rel="stylesheet" href="css/login/main.css">
+	<link rel="stylesheet" href="css/login/style.css">
+
+</head>
+<body>
+<!-- 网站header begin -->
+<div c="" p="" i="" editStatus="0" class="siteHTopBox" data-status="off" id="siteHTopBox">
+	<div class="mainInnerBox">
+		<div class="siteHtelBox">官方咨询电话<span>400-010-6810</span></div>
+		<!-- 手机app && 联系电话 begin -->
+		<div class="siteHRight">
+			<a href="/special-lists" class="siteH_feedbackA btn_ALink" target="_blank">专题</a>
+			<a href="javascript:;" class="siteH_feedbackA btn_ALink" id="RS_yjfkBox">意见反馈</a>
+			<a href="http://www.zhongchou.com/help-center" class="siteHCodeB btn_ALink" target="_blank">帮助中心</a>
+		</div>
+		<!-- 手机app && 联系电话 end -->
+	</div>
+</div>
+<div class="siteMTopBox">
+	<div class="mainInnerBox clearfix relative">
+		<a href="http://www.zhongchou.com/" class="siteMIndexA">
+			<img src="picture/1462795454.png"/>
+		</a>
+		<div class="siteHNavBox clearfix">
+			<div class="siteHNavItem">
+				<a href="http://www.zhongchou.com/" class="siteHNavItemA">首&nbsp;&nbsp;页</a>
+			</div>
+			<div class="siteHNavItem">
+				<a href="http://www.zhongchou.com/browse/di-si_c/" class="siteHNavItemA">奖励众筹</a>
+			</div>
+			<div class="siteHNavItem">
+				<a href="http://www.zhongchou.com/gongyi" class="siteHNavItemA">公益众筹</a>
+			</div>
+			<div class="siteHNavItem">
+				<a rel="nofollow" href="http://www.yuanshihui.com" class="siteHNavItemA hidden" target="_blank">股权投资</a>
+			</div>
+
+		</div>
+
+
+		<a href="javascript:;" data-href="http://f.zhongchou.com/project/launch/dist"
+		   class="siteM_fqBtn btn_ALink js-checkLogin"><i></i>发起众筹</a>
+		<!-- 未登录状态 begin -->
+		<div class="siteHLoginBox clearfix">
+			<!--<a class="cd-signin" href="#0">登录</a>-->
+			<!--<span class="line"></span>-->
+			<!--<a ss="cd-signup" href="#0">注册</a>-->
+			<nav class="main_nav">
+				<ul>
+					<li>
+						<a class="cd-signin" href="#0">登录</a>
+						<span class="line"></span>
+						<a class="cd-signup" href="#0">注册</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<!--弹出层 start-->
+		<div class="cd-user-modal">
+			<div class="cd-user-modal-container">
+				<ul class="cd-switcher">
+					<li><a href="#0">用户登录</a></li>
+					<li><a href="#0">注册新用户</a></li>
+				</ul>
+
+				<div id="cd-login"> <!-- 登录表单 -->
+					<form class="cd-form">
+						<p class="fieldset">
+							<label class="image-replace cd-username" for="signin-username">用户名</label>
+							<input class="full-width has-padding has-border" id="signin-username" type="text"
+								   placeholder="输入用户名">
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">密码</label>
+							<input class="full-width has-padding has-border" id="signin-password" type="text"
+								   placeholder="输入密码">
+						</p>
+
+						<p class="fieldset">
+							<input type="checkbox" id="remember-me" checked>
+							<label for="remember-me">记住登录状态</label>
+						</p>
+
+						<p class="fieldset">
+							<input class="full-width2" type="submit" value="登 录">
+						</p>
+					</form>
+				</div>
+
+				<div id="cd-signup"> <!-- 注册表单 -->
+					<form class="cd-form">
+						<p class="fieldset">
+							<label class="image-replace cd-username" for="signup-username">用户名</label>
+							<input class="full-width has-padding has-border" id="signup-username" type="text"
+								   placeholder="输入用户名">
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signup-email">邮箱</label>
+							<input class="full-width has-padding has-border" id="signup-email" type="email"
+								   placeholder="输入mail">
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signup-password">密码</label>
+							<input class="full-width has-padding has-border" id="signup-password" type="text"
+								   placeholder="输入密码">
+						</p>
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signup-password">确认密码</label>
+							<input class="full-width has-padding has-border" id="signup-password" type="text"
+								   placeholder="确认密码">
+						</p>
+
+						<p class="fieldset">
+							<input type="checkbox" id="accept-terms">
+							<label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+						</p>
+
+						<p class="fieldset">
+							<input class="full-width2" type="submit" value="注册新用户">
+						</p>
+					</form>
+				</div>
+
+				<a href="#0" class="cd-close-form">关闭</a>
+			</div>
+		</div>
+		<!--弹出层 end-->
+
+
+		<!-- 未登录状态 end -->
+
+
+		<div class="siteMSearch siteIlB_box sitePHBox" id="search-box" style="margin-right: 20px;">
+			<div class="search-input">
+				<input type="text" class="siteMSearchInput siteIlB_item sitePHInput" id="searchInput" autocomplete="off"
+					   placeholder="国学大师陈寅恪珍贵手稿与书信"/>
+			</div>
+
+			<a href="javascript:;" class="siteMSearchA siteIlB_item fr" id="searchBtn"></a>
+
+			<span class="sitePHTip" style="top: 4px;left: 5px;">国学大师陈寅恪珍贵手稿与书信</span>
+
+			<div class="input-hinter"></div>
+		</div>
+
+		<a href="http://www.zhongchou.com/crowdfund-index" class="wdfq btn_ALink my-zc fr"
+		   target="_blank"><i></i>管理众筹</a>
+	</div>
+</div>
+<!--搜索框效果-->
+<script>
+	$(document).ready(function () {
+		var hint = new InputHinter({container: 'search-box', id: "searchInput"});
+		$('#searchBtn').click(function () {
+			var $input = $('#searchInput');
+			window.location.href = "/search/kw-" + hint.encodeKw($.trim($input.val()) || $input.attr('placeholder'));
+		});
+		$('#searchInput').focus(function () {
+			setTimeout(function () {
+				$('#search-box').addClass("siteMSearch-focus")
+			}, 1)
+		})
+		$('#searchInput').blur(function () {
+			setTimeout(function () {
+				$('#search-box').removeClass("siteMSearch-focus")
+			}, 1)
+		});
+		if (!$(".other-login").html()) {
+			$('.siteMSearch').css('right', '180px');
+		}
+	});
+	var showCode = '';
+</script>
+<!-- 意见反馈弹层 begin -->
+<div class="siteFixMask" id="siteFixMask"></div>
+<div class="yjfkWrap" id="yjfkWrap">
+	<div class="yjfkHeader">意见反馈<a href="###" class="yjfk_closeA" id="yjfk_closeA"></a></div>
+	<div class="yjfkConBox">
+		<div class="yjfk_placeHBox">
+			<textarea class="yjfkTextArea" id="yjfkTextArea" placeholder="有什么不好用的地方，请告诉我们，我们会努力做的更好！"></textarea>
+			<span class="yjfk_placeHText">有什么不好用的地方，请告诉我们，我们会努力做的更好！</span>
+		</div>
+		<div class="yjfk_placeHBox">
+			<input type="text" class="yjfkInput" placeholder="您的联系方式，电话／qq／邮箱（选填）"/>
+			<span class="yjfk_placeHText" style="top:9px\0\11;">您的联系方式，电话／qq／邮箱（选填）</span>
+		</div>
+		<p class="yjfk_errorP" id="yjfk_errorP">请输入意见反馈内容！</p>
+		<div class="yjfk_btnBox">
+			<input type="button" class="yjfkSubmit" id="yjfkSubmit" value="提交"/>
+			<input type="button" class="yjfkCancel" id="yjfkCancel" value="取消"/>
+		</div>
+	</div>
+</div>
+<!-- 意见反馈弹层 end -->
+
+<!-- 网站header end -->
+<link rel="stylesheet" href="css/public20170414.css" type="text/css">
+<style type="text/css" title="">
+	.topics-lists li a img {
+		height: 184px !important;
+	}
+</style>
+<div style="height:20px;"></div>
+<div class="container">
+	<!--zhuanti -->
+	<div class="kUi_content">
+		<div class="wrap" style="margin-bottom:18px;">
+			<div class="topics-box mb20">
+				<span class="hot-p"></span>
+				<ul>
+					<li class="topics-pic1">
+						<a href="special-ＣＥＡ" target="_blank">
+							<img src='attachment/4a3c14c8598f1e0cbdf535842d8f861f.jpg'>
+						</a>
+					</li>
+					<li class="topics-pic2">
+						<a href="special-shehuichuangyejia" target="_blank">
+							<img src='attachment/d397cf074aa19ec08889c60a2f6f4903.jpg'>
+						</a>
+					</li>
+					<li class="topics-pic3">
+						<a href="special-aisiqingnian" target="_blank">
+							<img src='attachment/d9a03dfd9e3177e49532622391547aec.jpg'>
+						</a>
+					</li>
+					<li class="topics-pic4">
+						<a href="special-mingjia" target="_blank">
+							<img src='attachment/826375b20237d40c6f2c28464e54f0d2.jpg'>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="topics-lists mb20">
+				<ul>
+
+
+					<li>
+						<a href="special-xinshou" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/63ccc827c537688b5259ea362ca71d2e_thumb_245x184.jpg'>
+							<span>新手帮助</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-faqi" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/c678a5c3e5af9d8584d4954e0dbd72ff_thumb_245x184.jpg'>
+							<span>发起手册</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-chubanyexiangqing" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/60d3b97d882b854c926a6127ce336dd9_thumb_245x184.jpg'>
+							<span>出版众筹完整服务l链</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-yishuzengzhi" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/b20037dc433af31fa805852e653511d5_thumb_245x184.jpg'>
+							<span>艺术频道增值服务</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-chubanzhongchou" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/966cd812fc89446ad9a63df99ba89e4f_thumb_245x184.jpg'>
+							<span>出版众筹8种玩法</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-lerenlezhu" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/e572df774396f2db15a44b6f81a40a14_thumb_245x184.jpg'>
+							<span>创益社区——公益创客大赛</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-fupindasai" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/b8ca624fba0a15e7e8a0817aebb29381_thumb_245x184.jpg'>
+							<span>2017第二届陇南众筹扶贫大赛</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-xiaoyingjihua" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/138202cc5e799e73993ceb26f3e75e4d_thumb_245x184.jpg'>
+							<span>小鹰计划：青年影响未来，行动改变世界</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-blogchina" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/cbbcec197de2466b1b2ea645f737e056_thumb_245x184.jpg'>
+							<span>博客中国——中国诗歌助力计划</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-niandupandian" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/5011b1120e158b9167c0f0f6297c3860_thumb_245x184.jpg'>
+							<span>2016年度盘点</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-wenchuangpandian" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/31033d9d500b5c900d86bda449d89d04_thumb_245x184.jpg'>
+							<span>揭秘2016年众筹文创迹忆</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-tomorrow" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/dbdf4d4cb773dc446d13851958922693_thumb_245x184.jpg'>
+							<span>你好，时光，期待明天，与你有一个美好的相遇</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-binfenyantai" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/b005aa7798687cb90ff876b225e76872_thumb_245x184.jpg'>
+							<span>缤纷烟台，召唤山与海的味蕾精灵</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-be_yourself" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/920e511315a3c80473feb19f4971e3b7_thumb_245x184.jpg'>
+							<span>时光不染，回忆不谈</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-jingtougeming" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/b2e6d07bd66535aaa046d58c62ac1115_thumb_245x184.gif'>
+							<span>镜头里镜头外，每一帧都是一次革命</span>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="special-chenshizhongguo" target="_blank">
+							<img src='http://zcr7.ncfstatic.com/attachment/e5db7c274b8a7898ccff6ab6700a6977_thumb_245x184.png'>
+							<span>《城市·中国》栏目出品大型中国老建筑系列纪录片</span>
+						</a>
+					</li>
+
+
+				</ul>
+			</div>
+			<div class="zt_pages">
+
+				<span class="current">1</span>
+				<a href="?p=2">2</a>
+				<a href="?p=3">3</a>
+
+				<a href="?p=2" class="next">></a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 网站Footer begin -->
+<!--悬浮框-->
+
+<!--悬浮框 end-->
+
+<div class="SiteGoTopBox"><a href="javascript:;" class="btn_ALink" id="SiteGoTopBtn"></a></div>
+<div class="siteFooterBox">
+	<div class="mainInnerBox">
+		<div class="siteMFooter">
+			<div class="siteMFooterABox">
+				<a href="http://www.zhongchou.com/help-index" rel="nofollow" class="site_hoverCss3A" target="_blank">关于我们</a><span>|</span>
+				<a href="http://www.zhongchou.com/help-contact" rel="nofollow" class="site_hoverCss3A" target="_blank">联系我们</a><span>|</span>
+				<a href="http://www.zhongchou.com/help-term" rel="nofollow" class="site_hoverCss3A"
+				   target="_blank">服务协议</a><span>|</span>
+				<a href="http://www.zhongchou.com/help-specification" rel="nofollow" class="site_hoverCss3A"
+				   target="_blank">项目发起规范</a><span>|</span>
+				<a href="http://www.zhongchou.com/help-license" rel="nofollow" class="site_hoverCss3A" target="_blank">公司资质</a><span>|</span>
+				<a href="http://www.zhongchou.com/help-center" class="site_hoverCss3A" target="_blank">帮助中心</a>
+				<!--					<a href="--><!--" class="site_hoverCss3A" target="_blank">合作专区</a>-->
+			</div>
+			<!--<div class="siteMFooter_gzwmBox siteIlB_box">
+				<span class="siteIlB_item">关注我们:</span>
+				<a href="http://e.weibo.com/zhongchouwang2013" rel="nofollow" class="wb siteIlB_item" target="_blank"></a>
+				<a href="http://user.qzone.qq.com/2357291729" rel="nofollow" class="qq siteIlB_item" target="_blank"></a>
+				<a href="http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BC%97%E7%AD%B9%E7%BD%91" rel="nofollow" class="tb siteIlB_item" target="_blank"></a>
+				<a href="http://www.douban.com/people/zhongchou_cn/" rel="nofollow" class="db siteIlB_item" target="_blank"></a>
+			</div>-->
+		</div>
+	</div>
+	<div class="siteBFooter">
+		<p class="siteBFooter_p">©2015 北京网信众筹网络科技有限公司 zhongchou.com 版权所有 京ICP证150145号 | 出版物经营许可证编号新出发（京）批字第直140141号 |
+			食品流通许可证 编号：SP1101051410311599 | 京公网安备11010502026064</p>
+	</div>
+</div>
+<!-- 网站Footer end -->
+<script type="text/javascript" src="js/baseClass.js"></script>
+
+
+<script>
+	var isLogin = false;
+	$('.float_win a').click(function () {
+		if (isLogin == true) {
+			$(this).attr('href', 'http://www.zhongchou.com/auth-wxlc');
+		} else {
+			$('.siteH_login.Js-showLogin').click();
+		}
+	});
+</script>
+</body>
+</html>

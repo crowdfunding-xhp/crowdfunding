@@ -1,0 +1,287 @@
+﻿
+<!DOCTYPE html>
+<html id='ng-app'>
+<head>
+<title title>众筹网-中国专业的一站式综合众筹融资服务平台</title>
+<meta charset="utf-8" />
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=11">
+<link rel="shortcut icon" type="image/png"
+	href="http://zcs5.ncfstatic.com/v3/static/images/icon/title.png?v=" />
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<script type="text/javascript" src="js/common.js"></script>
+<meta property="qc:admins" content="255367746162076730756375" />
+<script type="text/javascript" src="js/sso-lib.js"></script>
+<!--layui使用-->
+<script src="layui/layui.js"></script>
+<link rel="stylesheet" href="layui/css/layui.css" />
+<!--登录-->
+<script src="js/login/main.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/login/myLogin.js"></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="css/login/main.css">
+<link rel="stylesheet" href="css/login/style.css">
+<script>
+	$(window).ready(function() {
+		var userInfo = $.cookie("userInfo");
+		if (userInfo) {
+			userInfo = eval("(" + userInfo + ")");
+		} else {
+			window.location.href = "index.html";
+		}
+		$("input[name=Uid]").val(userInfo.Uid);
+		$("[name=Uimage]").attr("src", userInfo.Uimage);
+		$("input[name=Unickname]").val(userInfo.Unickname);
+		$("input[name=Usex]:radio").each(function() {
+			if (userInfo.Usex == this.value) {
+				this.checked = "checked";
+			}
+		});
+		$("input[name=Uphone]").val(userInfo.Uphone);
+
+		programList();
+	})
+	function programList() {
+		var Uid = $('#Uid').val();
+		var Pid = $('#Pid').val();
+		var Oid = $('#Oid').val();
+		var tbody = window.document.getElementById("tbody-result");
+
+		$.ajax({
+			type : "post",
+			dataType : "json",
+			url : "listOrder.do",
+			data : {
+				Uid : Uid
+			},
+			success : function(msg) {
+				//msg = eval("("+msg+")");
+				
+				console.log(msg);
+				
+				var i = 0;
+				var str = "";
+				while (msg[i]) {
+					if (msg[i].Uid == Uid) {
+
+						str += "<tr>" + "<td>" + msg[i].Oid + "</td>"
+								+ "<td><a href='contents.html?Pid=" + msg[i].Pid + "'>" + msg[i].Pid
+								+ "</a></td>" + "<td>" + msg[i].Omoney + "</td>"
+								+ "<td>" + msg[i].Ostate + "</td>" + "</tr>";
+
+					}
+					i++;
+				}
+				tbody.innerHTML = str;
+			},
+			error : function() {
+				alert("查询失败")
+			}
+		});
+	}
+</script>
+<script>
+	$(function() {
+		$('#btSearch').click(function() {
+			programList();
+		});
+
+	});
+</script>
+</head>
+<body>
+	<!-- 网站header begin -->
+		<div editStatus="0" class="siteHTopBox" id="siteHTopBox">
+			<div class="mainInnerBox">
+				<div class="siteHtelBox">
+					官方咨询电话<span>000-010-0000</span>
+				</div>
+				<!-- 手机app && 联系电话 begin -->
+				<div class="siteHRight">
+					
+					<a href="new-help.html" class="siteHCodeB btn_ALink" target="_blank">帮助中心</a>
+				</div>
+				<!-- 手机app && 联系电话 end -->
+			</div>
+		</div>
+		<div class="siteMTopBox">
+			<div class="mainInnerBox clearfix relative">
+				<a href="index.html" class="siteMIndexA"> <img src="picture/1462795454.png" />
+				</a>
+				<div class="siteHNavBox clearfix">
+					<div class="siteHNavItem">
+						<a href="index.html" class="siteHNavItemA">首&nbsp;&nbsp;页</a>
+					</div>
+				</div>
+
+				<a href="raise.html" class="siteM_fqBtn btn_ALink js-checkLogin"><i></i>发起众筹</a>
+
+				<!-- 登录状态 begin -->
+				<div class="siteHCountBox" id="isLogin">
+					<div class="index-avatar fl">
+						<img src="" alt="头像"><i></i>
+					</div>
+					<div class="siteHCountInner">
+						<!-- <a href="/zc/#/user-center/reward-order" class="grzx btn_ALink" target="_self">个人中心</a> -->
+						<input type="hidden" id="Uid" name="Uid">
+						<a href="userMessage.html" class="nickname" target="_blank"></a>
+						<!--
+                        <a href="" class="wdlc btn_ALink" target="_blank"><i></i>
+							<font>我的理财</font>
+						</a>
+						-->
+						<a href="userMessage.html" class="guanzhu siteIlB_item btn_ALink" target="_blank"><i></i>个人中心<b></b></a>
+						<a href="myorders.html" class="wddd btn_ALink" target="_self"><i></i>我的订单</a>
+						
+						<a href="projManage.html" class="wdfq btn_ALink" target="_self"><i></i>我的发起</a>
+						<!--<a href="" class="wdhb btn_ALink" target="_self"><i></i>我的红包</a>
+						<a href="" class="xiaoxi siteIlB_item btn_ALink" target="_blank"><i></i>消息<b ng-bind="user.commentsNum+user.letterNum+user.systemMessNum"></b></a>
+						<a href="" class="sz btn_ALink" target="_self"><i></i>设置</a>-->
+						<a href="javascript:;" class="quit btn_ALink"><i></i>退出</a>
+
+						<!--							<a href="-->
+						<!--" class="quit btn_ALink"><i></i>退出</a>-->
+					</div>
+				</div>
+				<a href="projManage.html" class="wdfq btn_ALink my-zc fr glzc" target="_blank"><i></i>管理众筹</a>
+				<!-- 登录状态 end -->
+
+				
+
+			</div>
+		</div>
+
+		<!--搜索框效果-->
+		<!--<script>
+			$(document).ready(function() {
+				var hint = new InputHinter({
+					container: 'search-box',
+					id: "searchInput"
+				});
+				$('#searchBtn').click(function() {
+					var $input = $('#searchInput');
+					//window.location.href = "search-list.html?searchVal=" + hint.encodeKw($.trim($input.val()) || $input.attr('placeholder'));
+
+					var getUrlParam = function(name) {
+						var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+						var r = window.location.search.substr(1).match(reg);
+						if(r != null)
+							return decodeURI(r[2]);
+						return null;
+					}
+					var searchVal = getUrlParam('searchVal');
+
+				});
+				$('#searchInput').focus(function() {
+					setTimeout(function() {
+						$('#search-box').addClass("siteMSearch-focus")
+					}, 1)
+				})
+				$('#searchInput').blur(function() {
+					setTimeout(function() {
+						$('#search-box').removeClass("siteMSearch-focus")
+					}, 1)
+				});
+
+			});
+			var showCode = '';
+		</script>-->
+
+		<!-- 网站header end -->
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+
+	<div class="backstage-wrap wrap1120 clearfix">
+
+		<div class="personal-center-right">
+			<div class="m-ulitem">
+				<!-- <span class="project-name"></span> -->
+				<ul class="list-nav clearfix">
+					<li><a class="z-own" href="myorders.html">全部订单</a></li>
+				</ul>
+				<form class="project-search">
+					<a href="javascript:;"  value="刷新" id="btSearch" type="submit" class="search-btn">刷新</a>
+				</form>
+				<div class="m-location">
+					
+					<table>
+						<colgroup>
+							<col width='5%'>
+							<col width='5%'>
+							<col width='5%'>
+							<col width='5%'>
+						</colgroup>
+						<thead>
+							<tr class='bg-tr'>
+								<td class="wp10">订单编号</td>
+								<td class="wp6">项目编号</td>
+								<td class="wp6">我的支持数</td>
+								<td class="wp20">项目状态</td>
+							</tr>
+						</thead>
+						<tbody id="tbody-result">
+						</tbody>
+
+					</table>
+
+					<div class="pager"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 网站Footer begin -->
+		<!--悬浮框-->
+
+		<!--悬浮框 end-->
+
+		<div class="SiteGoTopBox">
+			<a href="javascript:;" class="btn_ALink" id="SiteGoTopBtn"></a>
+		</div>
+		<div class="siteFooterBox">
+			<div class="mainInnerBox">
+				<div class="siteMFooter">
+					<!--<div class="siteMFooterABox">
+						<a href="http://www.zhongchou.com/help-index" rel="nofollow" class="site_hoverCss3A" target="_blank">关于我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-contact" rel="nofollow" class="site_hoverCss3A" target="_blank">联系我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-term" rel="nofollow" class="site_hoverCss3A" target="_blank">服务协议</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-specification" rel="nofollow" class="site_hoverCss3A" target="_blank">项目发起规范</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-license" rel="nofollow" class="site_hoverCss3A" target="_blank">公司资质</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-center" class="site_hoverCss3A" target="_blank">帮助中心</a>
+						<!--					<a href="-->
+						<!--" class="site_hoverCss3A" target="_blank">合作专区</a>
+					</div>-->
+					<!--<div class="siteMFooter_gzwmBox siteIlB_box">
+					<span class="siteIlB_item">关注我们:</span>
+					<a href="http://e.weibo.com/zhongchouwang2013" rel="nofollow" class="wb siteIlB_item" target="_blank"></a>
+					<a href="http://user.qzone.qq.com/2357291729" rel="nofollow" class="qq siteIlB_item" target="_blank"></a>
+					<a href="http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BC%97%E7%AD%B9%E7%BD%91" rel="nofollow" class="tb siteIlB_item" target="_blank"></a>
+					<a href="http://www.douban.com/people/zhongchou_cn/" rel="nofollow" class="db siteIlB_item" target="_blank"></a>
+				</div>-->
+				</div>
+			</div>
+			<div class="siteBFooter">
+				<p class="siteBFooter_p">©2017 牛逼哄哄有限公司 47.94.110.76 版权所有 最终解释权归本组所有</p>
+			</div>
+		</div>
+		<!-- 网站Footer end -->
+	<script type="text/javascript" src="js/baseClass.js"></script>
+
+
+	<script>
+		var isLogin = true;
+		$('.float_win a').click(function() {
+			if (isLogin == true) {
+				$(this).attr('href', 'http://www.zhongchou.com/auth-wxlc');
+			} else {
+				$('.siteH_login.Js-showLogin').click();
+			}
+		});
+	</script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,592 @@
+﻿<!DOCTYPE html>
+<html id='ng-app'>
+
+	<head>
+		<title title>项目页</title>
+		<meta charset="utf-8" />
+
+		<meta name="keywords" content="众筹网" />
+		<meta name="description" content="众筹网" />
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=11">
+		<link rel="shortcut icon" type="image/png" href="http://zcs2.ncfstatic.com/v3/static/images/icon/title.png?v=" />
+		<!--登录-->
+		<script src="js/jquery-2.2.1.min.js"></script>
+		<script src="js/login/main.js"></script>
+		<link rel="stylesheet" href="css/login/main.css">
+		<link rel="stylesheet" href="css/login/style.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/sso-lib.js"></script>
+		<!--layui使用-->
+		<script src="layui/layui.js"></script>
+		<link rel="stylesheet" href="layui/css/layui.css" />
+		<!--登录-->
+		<script src="js/login/main.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/login/myLogin.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+		<link rel="stylesheet" href="css/login/main.css">
+		<link rel="stylesheet" href="css/login/style.css">
+		<!--本页js-->
+		<script src="js/contents.js"></script>
+
+	</head>
+
+	<body>
+		<!-- 网站header begin -->
+		<div class="siteHTopBox" id="siteHTopBox">
+			<div class="mainInnerBox">
+				<div class="siteHtelBox">
+					官方咨询电话<span>000-010-0000</span>
+				</div>
+				<!-- 手机app && 联系电话 begin -->
+				<div class="siteHRight">
+
+					<a href="new-help.html" class="siteHCodeB btn_ALink" target="_blank">帮助中心</a>
+				</div>
+				<!-- 手机app && 联系电话 end -->
+			</div>
+		</div>
+		<div class="siteMTopBox">
+			<div class="mainInnerBox clearfix relative">
+				<a href="index.html" class="siteMIndexA"> <img src="picture/1462795454.png" />
+				</a>
+				<div class="siteHNavBox clearfix">
+					<div class="siteHNavItem">
+						<a href="index.html" class="siteHNavItemA">首&nbsp;&nbsp;页</a>
+					</div>
+				</div>
+
+
+				<!-- 未登录状态 begin -->
+				<div class="siteHLoginBox clearfix" id="notLogin">
+
+					<nav class="main_nav">
+						<ul>
+							<li>
+								<a class="cd-signin" href="javascript:;">登录</a> <span class="line">yong</span>
+								<a class="cd-signup" href="javascript:;">注册</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<!--弹出层 start-->
+				<div class="cd-user-modal">
+					<div class="cd-user-modal-container">
+
+						<div id="notice_wrap">
+							<div class="notice">
+								<span></span>
+							</div>
+						</div>
+
+						<ul class="cd-switcher">
+							<li>
+								<a href="javascript:;">用户登录</a>
+							</li>
+							<li>
+								<a href="javascript:;">注册新用户</a>
+							</li>
+						</ul>
+
+						<div id="cd-login">
+							<!-- 登录表单 -->
+							<form class="cd-form" action="" method="post">
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-username" for="signin_username">用户名</label>
+									<input class="full-width has-padding has-border" required="required" id="signin_username" name="signin_username" type="text" placeholder="输入用户名">
+
+								</p>
+
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-password" for="signin_password">密码</label>
+
+									<input class="full-width has-padding has-border" required="required" id="signin_password" name="signin_password" type="password" placeholder="输入密码">
+									<!--<p class="tip"></p>-->
+								</p>
+
+								<p class="fieldset">
+									<input type="checkbox" name="remember_me" id="remember_me" checked="checked"> <label for="remember_me">记住登录状态</label> <span class="login_red"></span>
+								</p>
+								<p class="fieldset">
+									<input id="loginBtn" class="full-width2 submit" name="onsubmit" type="submit" value="登 录">
+								</p>
+							</form>
+						</div>
+
+						<div id="cd-signup">
+							<!-- 注册表单 -->
+							<form class="cd-form">
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-username" for="signup-username">用户名</label>
+									<input class="full-width has-padding has-border" name="signup_username" required id="signup-username" type="text" placeholder="输入用户名">
+								</p>
+
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-email" for="signup-email">邮箱</label> <input class="full-width has-padding has-border" name="signup_email" required id="signup-email" type="email" placeholder="输入mail">
+								</p>
+
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-password" for="signup-password">密码</label>
+									<input class="full-width has-padding has-border" name="signup_password" required id="signup-password" type="password" placeholder="输入密码">
+								</p>
+								<p class="fieldset">
+									<span class="tip"></span> <label class="image-replace cd-password" for="signup-repassword">确认密码</label>
+									<input class="full-width has-padding has-border" name="signup_repassword" required id="signup-repassword" type="password" placeholder="确认密码">
+								</p>
+
+								<p class="fieldset">
+									<span class="tip" style="top: auto;"></span> <input type="checkbox" name="accept_terms" required id="accept-terms">
+									<label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+									<span class="logup_red"></span>
+								</p>
+
+								<p class="fieldset">
+									<input id="signupBtn" class="full-width2" type="submit" value="注册新用户">
+								</p>
+							</form>
+
+						</div>
+
+						<a href="#0" class="cd-close-form">关闭</a>
+					</div>
+				</div>
+
+				<!--弹出层 end-->
+				<!-- 未登录状态 end -->
+
+				<!-- 登录状态 begin -->
+				<div class="siteHCountBox" id="isLogin">
+					<div class="index-avatar fl">
+						<img name="uimage" alt="头像"><i></i>
+					</div>
+					<div class="siteHCountInner">
+						<!-- <a href="/zc/#/user-center/reward-order" class="grzx btn_ALink" target="_self">个人中心</a> -->
+						<input type="hidden" name="Uid">
+						<a href="userMessage.html" class="nickname" target="_blank"></a>
+							
+						<a href="userMessage.html" class="guanzhu siteIlB_item btn_ALink" target="_blank"><i></i>个人中心<b></b></a>
+						<a href="myorders.html" class="wddd btn_ALink" target="_self"><i></i>我的订单</a>
+
+						<a href="projManage.html" class="wdfq btn_ALink" target="_self"><i></i>我的发起</a>
+						<!--<a href="" class="wdhb btn_ALink" target="_self"><i></i>我的红包</a>
+						<a href="" class="xiaoxi siteIlB_item btn_ALink" target="_blank"><i></i>消息<b ng-bind="user.commentsNum+user.letterNum+user.systemMessNum"></b></a>
+						<a href="" class="sz btn_ALink" target="_self"><i></i>设置</a>-->
+						<a href="javascript:;" class="quit btn_ALink"><i></i>退出</a>
+
+						<!--							<a href="-->
+						<!--" class="quit btn_ALink"><i></i>退出</a>-->
+					</div>
+				</div>
+				<a href="projManage.html" class="wdfq btn_ALink my-zc fr glzc" target="_blank"><i></i>管理众筹</a>
+				<!-- 登录状态 end -->
+
+			</div>
+		</div>
+
+			</div>
+		</div>
+
+		<!--搜索框效果-->
+		<script>
+			$(document).ready(function() {
+                var userInfo = $.cookie("userInfo");
+                if (userInfo) {
+                    userInfo = eval("(" + userInfo + ")");
+                    $("[name=uimage]").attr("src", userInfo.uimage);
+                }
+				var hint = new InputHinter({
+					container: 'search-box',
+					id: "searchInput"
+				});
+				$('#searchBtn').click(function() {
+					var $input = $('#searchInput');
+					//window.location.href = "search-list.html?searchVal=" + hint.encodeKw($.trim($input.val()) || $input.attr('placeholder'));
+
+					var getUrlParam = function(name) {
+						var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+						var r = window.location.search.substr(1).match(reg);
+						if(r != null)
+							return decodeURI(r[2]);
+						return null;
+					}
+					var searchVal = getUrlParam('searchVal');
+
+				});
+				$('#searchInput').focus(function() {
+					setTimeout(function() {
+						$('#search-box').addClass("siteMSearch-focus")
+					}, 1)
+				})
+				$('#searchInput').blur(function() {
+					setTimeout(function() {
+						$('#search-box').removeClass("siteMSearch-focus")
+					}, 1)
+				});
+
+			});
+			var showCode = '';
+		</script>
+		<!-- 意见反馈弹层 begin -->
+		<div class="siteFixMask" id="siteFixMask"></div>
+		<div class="yjfkWrap" id="yjfkWrap">
+			<div class="yjfkHeader">意见反馈
+				<a href="###" class="yjfk_closeA" id="yjfk_closeA"></a>
+			</div>
+			<div class="yjfkConBox">
+				<div class="yjfk_placeHBox">
+					<textarea class="yjfkTextArea" id="yjfkTextArea" placeholder="有什么不好用的地方，请告诉我们，我们会努力做的更好！"></textarea>
+					<span class="yjfk_placeHText">有什么不好用的地方，请告诉我们，我们会努力做的更好！</span>
+				</div>
+				<div class="yjfk_placeHBox">
+					<input type="text" class="yjfkInput" placeholder="您的联系方式，电话／qq／邮箱（选填）" />
+					<span class="yjfk_placeHText" style="top:9px\0\11;">您的联系方式，电话／qq／邮箱（选填）</span>
+				</div>
+				<p class="yjfk_errorP" id="yjfk_errorP">请输入意见反馈内容！</p>
+				<div class="yjfk_btnBox">
+					<input type="button" class="yjfkSubmit" id="yjfkSubmit" value="提交" />
+					<input type="button" class="yjfkCancel" id="yjfkCancel" value="取消" />
+				</div>
+			</div>
+		</div>
+		<!-- 意见反馈弹层 end -->
+
+		<!-- 网站header end -->
+		<!--main static-->
+		<div class="jlxqOuterBox" id="jlxqOuterBox" data-current="||" data-owner="0" data-userid="6312897" data-dealid="720329" data-dealcode="9e0d56cc0e29a732893fb79f" data-hrefUpdate="1" data-show-point="0">
+			<div class="mainIn02Box">
+				<div class="jlxqBox">
+					<!-- 详情header begin -->
+					<div class="jlxqTitle">
+						<a href="javascript:void(0);"> <img class='jltitphoto' src="picture/97virtual_avatar_small_2.jpg" />
+						</a>
+						<div class="jlxqtittext">
+							<div class="jlxqh3_wai">
+								<h3 class="jlxqTitle_h3" id="pname"></h3>
+							</div>
+							<div class="faqipeeson">
+								<span class='txt1'>发起人</span> <span class='txt2' style='text-decoration: none !important;'> <font
+								id="uname"></font>
+							</span>
+							</div>
+						</div>
+
+					</div>
+					<div class="xqDetailBox">
+						<span class="xqStatusSpan zcz ordering"></span>
+						<div class="xqDetailLeft siteImgBox">
+							<img id="pimage" class="lazy" />
+						</div>
+						<div class="xqDetailRight">
+							<div class="xqDetailDataBox">
+								<div class="xqDetailData">
+									<p>
+										<span class="ftP" id="ppresentMoney">153</span><span class="scP pl5">支持数</span>
+									</p>
+									<!-- <p class="scP">支持数</p> -->
+								</div>
+							</div>
+							<div class="xqRatioOuterBox">
+								<p class="ftP percent">27%</p>
+								<div class="xqRatio">
+									<div class="xqRatioInner" id="percent"></div>
+								</div>
+								<div class="xqRatioText clearfix">
+									<span class="leftSpan"> <span>剩余</span><b id="timeDifference">17天</b><span>天</span>
+
+									</span> <span class="rightSpan">目标<b id="ptargetMoney">¥50,000</b></span>
+								</div>
+							</div>
+							<div class="xqDetailBtnBox">
+
+								<a href="#jump" target="_self" class="xqDetail_supA js-linkTaget 1 btn_ALink ">立即支持</a>
+
+								<div class="xqDetailShareBox clearfix">
+									<div class="jlxqTitleText siteIlB_box">
+										<span class="gy siteIlB_item"> <a href=""
+										target="_blank" id="ptags" class="hoUdCLink">公益</a>
+									</span> <span class="addr siteIlB_item"> <a href="" id="ploc"
+										class="site_ALink siteIlB_item" target="_blank">北京</a> <!-- 		</span> <span class="label siteIlB_item"> <a
+										href=""
+										target="_blank" class="hoUdCLink">F1在学校</a> <a
+										href=""
+										target="_blank" class="hoUdCLink">创梦之队</a> <a
+										href=""
+										target="_blank" class="hoUdCLink">青少年科技</a>
+									</span> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 详情header end -->
+					<!-- 详情选项卡 begin -->
+					<span id="jump" name="jump"></span>
+					<div class="xqTabOuterBox" id="xqTabOBox">
+
+						<div class="xqTabHeader" id="xqTabHeader">
+							<div class="xqInner clearfix">
+
+								<ul class="xqTabNav_ul siteIlB_box" id="xqTabNav_ul">
+									<li class="cur" data-scrollto="fqrInforBox">项目详情</li>
+									<li data-scrollto="zxjzBox">项目更新</li>
+
+								</ul>
+								<!-- <div class="xqTabNavRight siteIlB_box">
+	<a href="javascript:;" class="support btn_ALink" onClick="$('#sitefixedMask,#yqc_popBox').show();"><i></i>邀请朋友支持</a>
+</div> -->
+
+							</div>
+						</div>
+					</div>
+					<!-- 详情选项卡 end -->
+					<!-- 详情主题内容 begin -->
+					<div class="xqInner">
+						<div class="xqMainOuterBox clearfix" id="tage">
+
+							<div class="xqMainLeftBox" id="left">
+								<span class="pdescripTitle" style="text-indent: 2em; display: inline-block;"></span>
+								<!-- 项目更新 begin -->
+								<div class="zxjzBox" id="zxjzBox"></div>
+								<!-- 项目更新 end -->
+								<!-- 详情页 -->
+								<div class="newXmxqBox" id="xmxqBox">
+									<span id="pdescripCont" style="text-indent: 2em; display: inline-block;"></span>
+								</div>
+
+								<!-- 支持者 begin -->
+								<div class="zczOuterBox" id="zczOuterBox">
+
+									<div class="zczFooterBox">
+										<div class="zczFootData">
+											<p class="ftP ptargetMoney">¥13,091</p>
+											<p class="scP">目标数</p>
+										</div>
+										<div class="zczFootData">
+											<p class="ftP ppresentMoney">153</p>
+											<p class="scP">支持数</p>
+										</div>
+										<div class="zczFootData">
+											<p class="ftP timeDifference">17天</p>
+											<p class="scP">剩余时间</p>
+										</div>
+
+									</div>
+
+									<a href="#jump" target="_self" class="xqDetail_supA js-linkTaget 1 btn_ALink ">立即支持</a>
+
+									<!-- 风险说明 -->
+
+									<div class="fxBox">
+										<div class="fxBox-head">风险说明</div>
+										<div class="fxBox-body">
+											<ol>
+												<li>众筹不是商品交易。支持者根据自己的判断选择、支持众筹项目，与发起人共同实现梦想并获得发起人承诺的回报，众 筹存在一定风险。
+												</li>
+												<li>众筹网平台只提供平台网络空间、技术服务和支持等中介服务。作为居间方，并不是发起人或支持者中的任何一方，众 筹仅存在于发起人和支持者之间，使用众筹平台产生的法律后果由发起人与支持者自行承担。
+												</li>
+												<li>众筹项目的回报发放、发票开具及其他后续服务事项均由发起人负责。如果发生发起人无法发放回报、延迟发放回报、 不提供回报后续服务等情形，您需要直接和发起人协商解决，众筹网对此不承担任何责任。
+												</li>
+												<li>由于发起人能力和经验不足、市场风险、法律风险等各种因素，众筹可能失败。众筹期限内未达到目标筹资额失败的项 目，您支持的款项会全部原路退还给您；其他情况下，您需要直接和发起人协商解决，众筹网对此不承担任何责任。
+												</li>
+												<li>支持纯抽奖档位、无私支持档位，一旦支付成功将不予退款，众筹失败的除外。</li>
+											</ol>
+										</div>
+									</div>
+
+									<!-- 风险说明 e-->
+
+								</div>
+								<!-- 支持者 end -->
+								<!-- 抽奖规则 s-->
+								<!-- 抽奖规则 e-->
+
+							</div>
+							<div class="xqMainRightBox">
+								<div>
+									<div>
+										<div>
+											<!-- 支持金额列表 begin -->
+											<div class="zcjeOuterBox">
+												<div id="cd-support">
+													<form class="cdd-form" action="" method="post">
+														<input type="hidden" name="pid">
+
+														<h3 class="wszc_h3">无私支持</h3>
+														<p class="zcje_textP">感谢您的无私奉献，这份支持将助我们的梦想飞的更高更远。</p>
+
+														<div class="wszc_inputBox sitePHBox">
+															<label>支持</label> <input type="text" class="wszc_input sitePHInput" maxlength="8" id="wszc_input" name="donateMoney" />
+
+														</div>
+														<span class="login_red"></span>
+														<!--<a href="/payapp/#/submit?projectID=9e0d56cc0e29a732893fb79f&itemID=5223462725d48a38c9d971b7&money=" target="_blank" class="wszc_submitBtn">无私支持</a>-->
+														<input type="submit" id="support" class="wszc_submitBtn 1 support" value="立即支持" />
+													</form>
+												</div>
+
+											</div>
+
+											<!-- 支持金额列表 end -->
+											<!-- 常见问题 begin -->
+											<!--                    <div class="cjwtOuterBox">-->
+											<!--                    	<h3 class="cjwt_h3">常见问题<a href="/help-center" class="hoUdCLink">查看更多</a></h3>-->
+											<!--                        <div class="cjwtList">-->
+											<!--                        	<div class="cjwtItem">-->
+											<!--                            	<div class="cjwtItemTitle">如何支持项目？（可理解为赞助或投资）</div>-->
+											<!--                                <div class="cjwtItemCont">进入项目详情页后，选择适合的支持选项，点击进行支付。可通过网银、支付宝、微信、易宝等进行付款，为保证资金的安全，支付的款项会进入第三方支付账户，不会直接进入发起人账户或者众筹网账户。</div>-->
+											<!--                            </div>-->
+											<!--                            <div class="cjwtItem">-->
+											<!--                            	<div class="cjwtItemTitle">项目失败如何退款？</div>-->
+											<!--                                <div class="cjwtItemCont">项目失败后，众筹网将为您办理退款，资金将原路返回到您的支付宝或银行账户中，您将于7-15个工作日收到退款。</div>-->
+											<!--                            </div>-->
+											<!--                            <div class="cjwtItem">-->
+											<!--                            	<div class="cjwtItemTitle">什么时间可以收到回报？</div>-->
+											<!--                                <div class="cjwtItemCont">项目回报会在项目结束后发起方承诺的期间内发放，具体时间在项目页的每个回报项下显示。</div>-->
+											<!--                            </div>-->
+											<!--                        </div>-->
+											<!--                    </div>-->
+
+										</div>
+
+										<!-- 联系我们 -->
+										<div class="contactBox">
+											<div class="contact-head">联系我们</div>
+											<div class="contact-body">
+												<ul class="contact-list">
+													<li>
+														<div class="item-contact item1">
+															<div class="obj-media"></div>
+															<div class="obj-body">
+																<span class="m1">发起人</span> <span><input
+																type="text" readonly="readonly" name="uname"></span>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="item-contact item3">
+															<div class="obj-media"></div>
+															<div class="obj-body">
+																<span class="m1">联系电话</span> <span><input
+																type="text" readonly="readonly" name="uphone"></span>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- 联系我们 e-->
+
+									<div class="gdr" id='gdr'></div>
+								</div>
+							</div>
+						</div>
+						<!-- 详情主题内容 end -->
+					</div>
+				</div>
+
+				<div style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 1000; opacity: 0.8; background-color: rgb(0, 0, 0); display: none;" id="layerBg"></div>
+				<!-- 网站Footer begin -->
+
+				<!--为了看效果加了下面这一行DIV -->
+				<script>
+					//    $(function () {
+					//        //去掉全局返回顶部
+					//        $("#SiteGoTopBtn").remove();
+					//        $(".heart-shaped").click(function(){
+					//        $(this).addClass('crt');
+					//        })
+					//    });
+					$(".close").click(function() {
+						$('.Js-pop,.project-lead').hide();
+						$.ajax({
+							url: '/deal-close',
+							data: {
+								'uid': $("#jlxqOuterBox").attr('data-userid'),
+								'dealId': $("#jlxqOuterBox").attr('data-dealid')
+							},
+							type: 'POST',
+						});
+					});
+				</script>
+				<script type="text/javascript" src="js/jia.js" charset="utf-8"></script>
+				<script>
+					window._bd_share_config = {
+						'common': {
+							'bdSnsKey': {},
+							'bdText': '',
+							'bdMini': '2',
+							'bdMiniList': false,
+							'bdPic': '',
+							'bdStyle': '0',
+							'bdSize': '16'
+						},
+						'share': {}
+					};
+					with(document)
+					0[(getElementsByTagName('head')[0] || body)
+						.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' +
+						~(-new Date() / 3600000)];
+				</script>
+				<!-- 网站Footer begin -->
+				<!--悬浮框-->
+
+				<!--悬浮框 end-->
+
+				<div class="SiteGoTopBox">
+					<a href="javascript:;" class="btn_ALink" id="SiteGoTopBtn"></a>
+				</div>
+				<div class="siteFooterBox">
+					<div class="mainInnerBox">
+						<div class="siteMFooter">
+							<!--<div class="siteMFooterABox">
+						<a href="http://www.zhongchou.com/help-index" rel="nofollow" class="site_hoverCss3A" target="_blank">关于我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-contact" rel="nofollow" class="site_hoverCss3A" target="_blank">联系我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-term" rel="nofollow" class="site_hoverCss3A" target="_blank">服务协议</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-specification" rel="nofollow" class="site_hoverCss3A" target="_blank">项目发起规范</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-license" rel="nofollow" class="site_hoverCss3A" target="_blank">公司资质</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-center" class="site_hoverCss3A" target="_blank">帮助中心</a>
+						<!--					<a href="-->
+							<!--" class="site_hoverCss3A" target="_blank">合作专区</a>
+					</div>-->
+							<!--<div class="siteMFooter_gzwmBox siteIlB_box">
+					<span class="siteIlB_item">关注我们:</span>
+					<a href="http://e.weibo.com/zhongchouwang2013" rel="nofollow" class="wb siteIlB_item" target="_blank"></a>
+					<a href="http://user.qzone.qq.com/2357291729" rel="nofollow" class="qq siteIlB_item" target="_blank"></a>
+					<a href="http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BC%97%E7%AD%B9%E7%BD%91" rel="nofollow" class="tb siteIlB_item" target="_blank"></a>
+					<a href="http://www.douban.com/people/zhongchou_cn/" rel="nofollow" class="db siteIlB_item" target="_blank"></a>
+				</div>-->
+						</div>
+					</div>
+					<div class="siteBFooter">
+						<p class="siteBFooter_p">©2017 牛逼哄哄有限公司 47.94.110.76 版权所有 最终解释权归本组所有</p>
+					</div>
+				</div>
+				<!-- 网站Footer end -->
+				<script type="text/javascript" src="js/baseClass.js"></script>
+				<!--分享 start-->
+				<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+				<!--分享 end-->
+
+				<!--<script type="text/javascript" src="js/pages.js"></script>-->
+				<script type="text/javascript" src="js/func.js"></script>
+				<script type="text/javascript" src="js/Uploadfy.js"></script>
+				<link rel="stylesheet" type="text/css" href="css/yanzheng.css">
+				<link rel="stylesheet" type="text/css" href="css/Uploadify.css">
+
+				<script>
+					var isLogin = false;
+					$('.float_win a').click(function() {
+						if(isLogin == true) {
+							$(this).attr('href', '');
+						} else {
+							$('.siteH_login.Js-showLogin').click();
+						}
+					});
+				</script>
+	</body>
+
+</html>

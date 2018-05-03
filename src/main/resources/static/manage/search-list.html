@@ -1,0 +1,1325 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<title title>众筹网-众筹中_支持人数项目</title>
+		<meta charset="utf-8" />
+
+		<meta name="keywords" content="众筹网-众筹中_支持人数项目" />
+		<meta name="description" content="众筹网-众筹中_支持人数项目" />
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=11">
+		<!--<link rel="shortcut icon"  type="image/png" href="http://zcs2.ncfstatic.com/v3/static/images/icon/title.png?v=" />-->
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/sso-lib.js"></script>
+		<script type="text/javascript" src="js/paging.js"></script>
+		<!--登录-->
+		<script src="js/login/main.js"></script>
+		<link rel="stylesheet" href="css/login/main.css">
+		<link rel="stylesheet" href="css/login/style.css">
+		
+		<script>
+			$(document).ready(function() {
+				alert(0);
+				var getUrlParam = function(name) {
+					var reg = new RegExp("(^|&)" +
+						name + "=([^&]*)(&|$)");
+					var r = window.location.search.substr(1).match(reg);
+					if(r != null) return decodeURI(r[2]);
+					return null;
+				}
+				var searchVal = getUrlParam('searchVal');
+
+				$.ajax(function() {
+					alert(1);
+					type: "post",
+					url: "login.do",
+					data: searchVal,
+					async: false,
+					timeout: 5000,
+					beforeSend: function() {
+						alert(0)
+						$('#warning').text('正在处理，请稍等！');
+					},
+					success: function(data) {
+						alert("成功");
+					},
+					error: function(data) {
+						alert("失败");
+					}
+
+				})
+
+			})
+		</script>
+		
+
+	</head>
+
+	<body>
+		<div id="warning"></div>
+		<!-- 网站header begin -->
+		<div editStatus="0" class="siteHTopBox" id="siteHTopBox">
+			<div class="mainInnerBox">
+				<div class="siteHtelBox">官方咨询电话<span>000-010-0000</span></div>
+				<!-- 手机app && 联系电话 begin -->
+				<div class="siteHRight">
+					<a href="subject.html" class="siteH_feedbackA btn_ALink" target="_blank">专题</a>
+					<a href="javascript:;" class="siteH_feedbackA btn_ALink" id="RS_yjfkBox">意见反馈</a>
+					<a href="new-help.html" class="siteHCodeB btn_ALink" target="_blank">帮助中心</a>
+				</div>
+				<!-- 手机app && 联系电话 end -->
+			</div>
+		</div>
+		<div class="siteMTopBox">
+			<div class="mainInnerBox clearfix relative">
+				<a href="index.html" class="siteMIndexA">
+					<img src="picture/1462795454.png" />
+				</a>
+				<div class="siteHNavBox clearfix">
+					<div class="siteHNavItem">
+						<a href="index.html" class="siteHNavItemA">首&nbsp;&nbsp;页</a>
+					</div>
+				</div>
+
+				<a href="raise.html" class="siteM_fqBtn btn_ALink js-checkLogin"><i></i>发起众筹</a>
+				<!-- 未登录状态 begin -->
+				<div class="siteHLoginBox clearfix">
+
+					<nav class="main_nav">
+						<ul>
+							<li>
+								<a class="cd-signin" href="#0">登录</a>
+								<span class="line"></span>
+								<a class="cd-signup" href="#0">注册</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<!--弹出层 start-->
+				<div class="cd-user-modal">
+					<div class="cd-user-modal-container">
+						<ul class="cd-switcher">
+							<li>
+								<a href="#0">用户登录</a>
+							</li>
+							<li>
+								<a href="#0">注册新用户</a>
+							</li>
+						</ul>
+
+						<div id="cd-login">
+							<!-- 登录表单 -->
+							<form class="cd-form" action="" method="post">
+								<p class="fieldset">
+									<label class="image-replace cd-username" for="signin-username">用户名</label>
+									<input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名">
+								</p>
+
+								<p class="fieldset">
+									<label class="image-replace cd-password" for="signin-password">密码</label>
+									<input class="full-width has-padding has-border" id="signin-password" type="text" placeholder="输入密码">
+								</p>
+
+								<p class="fieldset">
+									<input type="checkbox" id="remember-me" checked>
+									<label for="remember-me">记住登录状态</label>
+								</p>
+
+								<p class="fieldset">
+									<input class="full-width2" type="submit" value="登 录">
+								</p>
+							</form>
+						</div>
+
+						<div id="cd-signup">
+							<!-- 注册表单 -->
+							<form class="cd-form">
+								<p class="fieldset">
+									<label class="image-replace cd-username" for="signup-username">用户名</label>
+									<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="输入用户名">
+								</p>
+
+								<p class="fieldset">
+									<label class="image-replace cd-email" for="signup-email">邮箱</label>
+									<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
+								</p>
+
+								<p class="fieldset">
+									<label class="image-replace cd-password" for="signup-password">密码</label>
+									<input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="输入密码">
+								</p>
+								<p class="fieldset">
+									<label class="image-replace cd-password" for="signup-password">确认密码</label>
+									<input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="确认密码">
+								</p>
+
+								<p class="fieldset">
+									<input type="checkbox" id="accept-terms">
+									<label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+								</p>
+
+								<p class="fieldset">
+									<input class="full-width2" type="submit" value="注册新用户">
+								</p>
+							</form>
+						</div>
+
+						<a href="#0" class="cd-close-form">关闭</a>
+					</div>
+				</div>
+				<!--弹出层 end-->
+
+				<!-- 未登录状态 end -->
+
+				<div class="siteMSearch siteIlB_box sitePHBox" id="search-box" style="margin-right: 20px;">
+					<div class="search-input">
+						<input type="text" class="siteMSearchInput siteIlB_item sitePHInput" id="searchInput" autocomplete="off" placeholder="国学大师陈寅恪珍贵手稿与书信" />
+					</div>
+
+					<a href="javascript:;" class="siteMSearchA siteIlB_item fr" id="searchBtn"></a>
+
+					<span class="sitePHTip" style="top: 4px;left: 5px;">国学大师陈寅恪珍贵手稿与书信</span>
+
+					<div class="input-hinter"></div>
+				</div>
+
+				<a href="projManage.html" class="wdfq btn_ALink my-zc fr" target="_blank"><i></i>管理众筹</a>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var hint = new InputHinter({
+					container: 'search-box',
+					id: "searchInput"
+				});
+				$('#searchBtn').click(function() {
+					var $input = $('#searchInput');
+					window.location.href = "search-list.html?searchVal=" + hint.encodeKw($.trim($input.val()) || $input.attr('placeholder'));
+				});
+				$('#searchInput').focus(function() {
+					setTimeout(function() {
+						$('#search-box').addClass("siteMSearch-focus")
+					}, 1)
+				})
+				$('#searchInput').blur(function() {
+					setTimeout(function() {
+						$('#search-box').removeClass("siteMSearch-focus")
+					}, 1)
+				});
+				if(!$(".other-login").html()) {
+					//				$('.siteMSearch').css('right','180px');
+				}
+			});
+			var showCode = '';
+		</script>
+		<!-- 意见反馈弹层 begin -->
+		<div class="siteFixMask" id="siteFixMask"></div>
+		<div class="yjfkWrap" id="yjfkWrap">
+			<div class="yjfkHeader">意见反馈
+				<a href="###" class="yjfk_closeA" id="yjfk_closeA"></a>
+			</div>
+			<div class="yjfkConBox">
+				<div class="yjfk_placeHBox">
+					<textarea class="yjfkTextArea" id="yjfkTextArea" placeholder="有什么不好用的地方，请告诉我们，我们会努力做的更好！"></textarea>
+					<span class="yjfk_placeHText">有什么不好用的地方，请告诉我们，我们会努力做的更好！</span>
+				</div>
+				<div class="yjfk_placeHBox">
+					<input type="text" class="yjfkInput" placeholder="您的联系方式，电话／qq／邮箱（选填）" />
+					<span class="yjfk_placeHText" style="top:9px\0\11;">您的联系方式，电话／qq／邮箱（选填）</span>
+				</div>
+				<p class="yjfk_errorP" id="yjfk_errorP">请输入意见反馈内容！</p>
+				<div class="yjfk_btnBox">
+					<input type="button" class="yjfkSubmit" id="yjfkSubmit" value="提交" />
+					<input type="button" class="yjfkCancel" id="yjfkCancel" value="取消" />
+				</div>
+			</div>
+		</div>
+		<!-- 意见反馈弹层 end -->
+		<input type='hidden' id='csrf_token' value='21782169' />
+		<input type='hidden' id="session_name" value="PHPSESSID" />
+		<!-- 网站header end -->
+		<script type="text/javascript" src="js/banner.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/banner_1.css">
+
+		<div class="listFilterBox">
+			<div class="mainInnerBox">
+				<div class="souSuoBox siteIlB_box">
+					<label class="siteIlB_item">搜索关键词：</label><span class="siteIlB_item">“国学大师陈寅恪珍贵手稿与书信”</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- 列表条件 end -->
+
+		<!-- 卡片列表 begin -->
+		<div class="mainInnerBox">
+			<div class="sousuoListBox clearfix">
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-719888" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59a5230bd379e1a_t9_426x331_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-719888" class="siteCardICH3" title="【众筹扶贫邀您同行】春风十里不如你，临潭特产在等您！" target="_blank">【众筹扶贫邀您同行】春风十里不如你，临潭特产在等您！</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">随着社会的发展，绿色天然食品，青山绿水的那份恬然离我们渐行渐远。希望通过这次众筹让更多的人知道，其实，天青色等烟雨，林里山涧的羊肚菌和土蜂蜜在等您！</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-620000" class="site_ALink siteIlB_item" target="_blank">甘肃</a>
+								<a href="http://www.zhongchou.com/search/ciid-623000" class="site_ALink siteIlB_item" target="_blank">甘南</a>
+
+								<a href="http://www.zhongchou.com/search/lid-54733" class="site_ALink siteIlB_item" target="_blank">羊肚菌</a>
+								<a href="http://www.zhongchou.com/search/lid-14740" class="site_ALink siteIlB_item" target="_blank">土蜂蜜</a>
+								<a href="http://www.zhongchou.com/search/lid-46609" class="site_ALink siteIlB_item" target="_blank">山野菜</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥100624</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">784</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">101%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-720205" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/599a560c4690a_640x480_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-720205" class="siteCardICH3" title="【众筹扶贫牵手世界硒都】隐藏着长寿密码的硒土豆，只在恩施！" target="_blank">【众筹扶贫牵手世界硒都】隐藏着长寿密码的硒土豆，只在恩施！</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">恩施富硒，是种植防癌抗氧化农作物的理想之地。这里山高路远，农民一直都很贫困。这个七月土豆丰收了，农民却发愁了，如何销售出去？我用农业扶贫众筹来帮他们！</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-420000" class="site_ALink siteIlB_item" target="_blank">湖北</a>
+								<a href="http://www.zhongchou.com/search/ciid-422800" class="site_ALink siteIlB_item" target="_blank">恩施</a>
+
+								<a href="http://www.zhongchou.com/search/lid-15208" class="site_ALink siteIlB_item" target="_blank">恩施</a>
+								<a href="http://www.zhongchou.com/search/lid-103255" class="site_ALink siteIlB_item" target="_blank">硒土豆</a>
+								<a href="http://www.zhongchou.com/search/lid-967" class="site_ALink siteIlB_item" target="_blank">农业</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥23861</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">626</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">120%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-725392" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59b74fe45ddda1a_t9_394x394_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-725392" class="siteCardICH3" title="为癌症患者圆梦  在生命的舞台上，他们说——”哎哟不怕”" target="_blank">为癌症患者圆梦  在生命的舞台上，他们说——”哎哟不怕”</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">中国首部具有疗愈功能的话剧《哎哟 不怕 》，由癌症生存者自编自导自演，即将于10月在上海白玉兰剧场上演，我们想邀请更多癌症患友看剧，为他们加油。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-310000" class="site_ALink siteIlB_item" target="_blank">上海</a>
+
+								<a href="http://www.zhongchou.com/search/lid-14452" class="site_ALink siteIlB_item" target="_blank">癌症</a>
+								<a href="http://www.zhongchou.com/search/lid-1456" class="site_ALink siteIlB_item" target="_blank">公益</a>
+								<a href="http://www.zhongchou.com/search/lid-103601" class="site_ALink siteIlB_item" target="_blank">戏剧疗愈</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 93%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥46215</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">583</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">93%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-728669" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59c88c2b3fa161a_t9_640x480_thumb_245x184.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-728669" class="siteCardICH3" title="女巫飞行记：讲究的穿搭，不将就的旅行" target="_blank">女巫飞行记：讲究的穿搭，不将就的旅行</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">在黄金假期即将来临之际，我们以“美”的名义，集众人之力，推出一套最具美感的旅行穿搭指南，号召更多女性真正融入生活这场美的盛宴。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-330000" class="site_ALink siteIlB_item" target="_blank">浙江</a>
+								<a href="http://www.zhongchou.com/search/ciid-330100" class="site_ALink siteIlB_item" target="_blank">杭州</a>
+
+								<a href="http://www.zhongchou.com/search/lid-5140" class="site_ALink siteIlB_item" target="_blank">旅行</a>
+								<a href="http://www.zhongchou.com/search/lid-103873" class="site_ALink siteIlB_item" target="_blank">穿搭指南</a>
+								<a href="http://www.zhongchou.com/search/lid-43879" class="site_ALink siteIlB_item" target="_blank">游记</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥89473</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">562</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">299%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-340048" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59a4c30c2f5611a_t9_803x602_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-340048" class="siteCardICH3" title="《飞鸟集》" target="_blank">《飞鸟集》</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">一本极美好的经典诗集新译稿穿越过时光已然完成，它既著名又稍陌生，既古老又很崭新，它静静地期待着您知音者的目光，打开它，您一定会收获许多的喜悦</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-103470" class="site_ALink siteIlB_item" target="_blank">飞鸟集</a>
+								<a href="http://www.zhongchou.com/search/lid-103471" class="site_ALink siteIlB_item" target="_blank">泰戈尔</a>
+								<a href="http://www.zhongchou.com/search/lid-17533" class="site_ALink siteIlB_item" target="_blank">诗集</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 17%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥19222</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">420</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">17%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-720674" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/5985305b4c2671a_t9_912x421_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-720674" class="siteCardICH3" title="【众筹扶贫，牵手陇南】陇味缘食醋， 我们做的不仅是调味品！" target="_blank">【众筹扶贫，牵手陇南】陇味缘食醋， 我们做的不仅是调味品！</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">1、与农户形成合作模式； 2、圆贫困地区孩子的彩色梦想； 3、动员社会各界力量关爱及帮扶贫困地区。
+							</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-620000" class="site_ALink siteIlB_item" target="_blank">甘肃</a>
+								<a href="http://www.zhongchou.com/search/ciid-621200" class="site_ALink siteIlB_item" target="_blank">陇南</a>
+
+								<a href="http://www.zhongchou.com/search/lid-66652" class="site_ALink siteIlB_item" target="_blank">醋</a>
+								<a href="http://www.zhongchou.com/search/lid-103045" class="site_ALink siteIlB_item" target="_blank">康元</a>
+								<a href="http://www.zhongchou.com/search/lid-103046" class="site_ALink siteIlB_item" target="_blank">陇味缘</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 7%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥6914</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">304</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">7%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-719119" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/599408abab69d1a_t9_640x480_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-719119" class="siteCardICH3" title="国学大师陈寅恪珍贵手稿与书信仿真再现，线装典藏" target="_blank">国学大师陈寅恪珍贵手稿与书信仿真再现，线装典藏</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">今天我们邀请大家参与众筹，将国学大师陈寅恪先生曾经遗失的珍贵手稿以及部分书信，以线装典藏的方式仿真再现，与大家分享那段具有传奇经历的历史记忆，以此见证</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-310000" class="site_ALink siteIlB_item" target="_blank">上海</a>
+
+								<a href="http://www.zhongchou.com/search/lid-31156" class="site_ALink siteIlB_item" target="_blank">上海古籍</a>
+								<a href="http://www.zhongchou.com/search/lid-102889" class="site_ALink siteIlB_item" target="_blank">陈寅恪</a>
+								<a href="http://www.zhongchou.com/search/lid-102890" class="site_ALink siteIlB_item" target="_blank">珍贵手稿</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 65%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥64888</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">271</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">65%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-714133" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/5959f30b62a7f1a_t9_1217x920_thumb_245x184_2.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-714133" class="siteCardICH3" title="灯塔乡的孩子们长大了——灯塔乡自建学校爱心众筹" target="_blank">灯塔乡的孩子们长大了——灯塔乡自建学校爱心众筹</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">灯塔乡的孩子不仅地处偏远藏区，而且学校那些书桌，已经承载不了他们学习的热望。我们想给他们盖一个足够大的地方，不仅可以学习文化知识，也可以有个依靠。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-630000" class="site_ALink siteIlB_item" target="_blank">青海</a>
+								<a href="http://www.zhongchou.com/search/ciid-632600" class="site_ALink siteIlB_item" target="_blank">果洛</a>
+
+								<a href="http://www.zhongchou.com/search/lid-102762" class="site_ALink siteIlB_item" target="_blank">灯塔乡</a>
+								<a href="http://www.zhongchou.com/search/lid-102763" class="site_ALink siteIlB_item" target="_blank">自建学校</a>
+								<a href="http://www.zhongchou.com/search/lid-102764" class="site_ALink siteIlB_item" target="_blank">藏区学校</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 12%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥22955</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">237</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">12%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-724625" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59a66ab727d271a_t9_640x481_thumb_245x184_2.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-724625" class="siteCardICH3" title="我们在硒都之源——恩施新塘，专注天然富硒生态香米" target="_blank">我们在硒都之源——恩施新塘，专注天然富硒生态香米</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">原生态天然富硒的保护和利用，需要相当的资金支持和不懈的努力！我们将致力于把新塘天然生态富硒香米做成恩施标志性农田产品。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-420000" class="site_ALink siteIlB_item" target="_blank">湖北</a>
+								<a href="http://www.zhongchou.com/search/ciid-422800" class="site_ALink siteIlB_item" target="_blank">恩施</a>
+
+								<a href="http://www.zhongchou.com/search/lid-103479" class="site_ALink siteIlB_item" target="_blank">硒都恩施</a>
+								<a href="http://www.zhongchou.com/search/lid-103480" class="site_ALink siteIlB_item" target="_blank">天然富硒米</a>
+								<a href="http://www.zhongchou.com/search/lid-103481" class="site_ALink siteIlB_item" target="_blank">软香好口感</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 62%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥30617</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">226</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">62%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-727847" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59c110b4085341a_t9_1016x762_thumb_245x184.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-727847" class="siteCardICH3" title="小小爱心，助化隆山区孩子温暖过冬公益众筹" target="_blank">小小爱心，助化隆山区孩子温暖过冬公益众筹</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">愿人人都能献出一点爱心，一个举手之劳就可以帮助一个孩子甚至几个孩子，给予他们新的希望和对外面世界的向往和热爱！！</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-630000" class="site_ALink siteIlB_item" target="_blank">青海</a>
+								<a href="http://www.zhongchou.com/search/ciid-632100" class="site_ALink siteIlB_item" target="_blank">海东</a>
+
+								<a href="http://www.zhongchou.com/search/lid-1456" class="site_ALink siteIlB_item" target="_blank">公益</a>
+								<a href="http://www.zhongchou.com/search/lid-103789" class="site_ALink siteIlB_item" target="_blank">青海海东</a>
+								<a href="http://www.zhongchou.com/search/lid-88309" class="site_ALink siteIlB_item" target="_blank">研支团</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 42%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥11402</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">204</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">42%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-727424" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59bd530ee4aff1a_t9_4266x2400_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-727424" class="siteCardICH3" title="这一世，是我们每一个人，必须所走之路！到底该如何去走？" target="_blank">这一世，是我们每一个人，必须所走之路！到底该如何去走？</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">国学哲理诗《这一世》”，以现代诗词形式，阐释国学之精华；用纯真凝练之语言，用贴近生活之方式，让读者读后而受用，在忙碌的工作生活中，找到心灵归属！</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-130000" class="site_ALink siteIlB_item" target="_blank">河北</a>
+								<a href="http://www.zhongchou.com/search/ciid-130100" class="site_ALink siteIlB_item" target="_blank">石家庄</a>
+
+								<a href="http://www.zhongchou.com/search/lid-103735" class="site_ALink siteIlB_item" target="_blank">国学哲理诗</a>
+								<a href="http://www.zhongchou.com/search/lid-74446" class="site_ALink siteIlB_item" target="_blank">不忘初心</a>
+								<a href="http://www.zhongchou.com/search/lid-103736" class="site_ALink siteIlB_item" target="_blank">返璞归真</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥23465</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">190</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">118%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-722984" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59984653514821a_t9_5184x3456_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-722984" class="siteCardICH3" title="邀请你跟我一起来湘西花垣县夯来村小学盖爱心厨房！" target="_blank">邀请你跟我一起来湘西花垣县夯来村小学盖爱心厨房！</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">给国家级贫困县花垣县夯来村小学一个卫生干净的厨房，不再让吃上健康营养的饭菜成为孩子们的奢望，不再让滚滚浓烟，满满灰尘弥漫校园。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-430000" class="site_ALink siteIlB_item" target="_blank">湖南</a>
+								<a href="http://www.zhongchou.com/search/ciid-433100" class="site_ALink siteIlB_item" target="_blank">湘西</a>
+
+								<a href="http://www.zhongchou.com/search/lid-7597" class="site_ALink siteIlB_item" target="_blank">留守儿童</a>
+								<a href="http://www.zhongchou.com/search/lid-13462" class="site_ALink siteIlB_item" target="_blank">支教</a>
+								<a href="http://www.zhongchou.com/search/lid-11878" class="site_ALink siteIlB_item" target="_blank">扶贫</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥4689</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">189</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">110%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-726750" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59bd5597206631a_t9_1720x1291_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-726750" class="siteCardICH3" title="我想用明媚的色彩涂去贫民窟的一切不幸" target="_blank">我想用明媚的色彩涂去贫民窟的一切不幸</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">我想用明媚的色彩涂去贫民窟中的一切不幸，和菲律宾孩子们一起，为贫民窟进行壁画设计，画满房屋墙面和大地，将美好、希望、快乐和爱带给最需要的人。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-5545" class="site_ALink siteIlB_item" target="_blank">艺术</a>
+								<a href="http://www.zhongchou.com/search/lid-11194" class="site_ALink siteIlB_item" target="_blank">绘画</a>
+								<a href="http://www.zhongchou.com/search/lid-103737" class="site_ALink siteIlB_item" target="_blank">贫民窟</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥25253</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">189</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">127%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-722124" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59b76c991e3d61a_t9_765x510_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-722124" class="siteCardICH3" title="传统文化戊戌年（2018）华夏历" target="_blank">传统文化戊戌年（2018）华夏历</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">这是一本以农历为主要历法内容，配以授权汉服图片的台历</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-360000" class="site_ALink siteIlB_item" target="_blank">江西</a>
+								<a href="http://www.zhongchou.com/search/ciid-360500" class="site_ALink siteIlB_item" target="_blank">新余</a>
+
+								<a href="http://www.zhongchou.com/search/lid-6721" class="site_ALink siteIlB_item" target="_blank">汉服</a>
+								<a href="http://www.zhongchou.com/search/lid-25027" class="site_ALink siteIlB_item" target="_blank">汉文化</a>
+								<a href="http://www.zhongchou.com/search/lid-33190" class="site_ALink siteIlB_item" target="_blank">台历</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥11425</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">188</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">115%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-728453" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59c650ba0716e1a_t9_1280x960_thumb_245x184.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-728453" class="siteCardICH3" title="关注边缘群体——北京电影学院2018届导演系毕业作品《一只蓝色的虾》经费筹集" target="_blank">关注边缘群体——北京电影学院2018届导演系毕业作品《一只蓝色的虾》经费筹集</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">《一只蓝色的虾》是北京电影学院导演系本科毕业作品。我们必须在2017年11月12日之前筹集到5万元才能成功，希望您能给予我们支持。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-16423" class="site_ALink siteIlB_item" target="_blank">短片</a>
+								<a href="http://www.zhongchou.com/search/lid-3112" class="site_ALink siteIlB_item" target="_blank">电影</a>
+								<a href="http://www.zhongchou.com/search/lid-649" class="site_ALink siteIlB_item" target="_blank">学生</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 29%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥11560</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">183</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">29%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-722206" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/5995123cc4baa1a_t9_5184x3456_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-722206" class="siteCardICH3" title="之前犯过很多错 这次我想是对的 马拉松环跑中国" target="_blank">之前犯过很多错 这次我想是对的 马拉松环跑中国</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">34省份 52个马拉松设跑城市 108个城市 365天 52580公里 无数个故事 这些不仅仅是一串数字 更是一种信仰
+							</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-1456" class="site_ALink siteIlB_item" target="_blank">公益</a>
+								<a href="http://www.zhongchou.com/search/lid-8782" class="site_ALink siteIlB_item" target="_blank">中国</a>
+								<a href="http://www.zhongchou.com/search/lid-36463" class="site_ALink siteIlB_item" target="_blank">环游</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥10088</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">180</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">101%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-715642" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/595e1dd384fe71a_t9_640x480_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-715642" class="siteCardICH3" title="《给天使买房》鲁子渝/著       单价28元" target="_blank">《给天使买房》鲁子渝/著       单价28元</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">让我们共同分享自己的收获与感悟，理想与抱负，思想与文化，成为具有影响力的名家。我们诚邀专栏作家一起共筑这伟大的理想，创建《博客中国名家书库》。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-15313" class="site_ALink siteIlB_item" target="_blank">小说</a>
+								<a href="http://www.zhongchou.com/search/lid-96303" class="site_ALink siteIlB_item" target="_blank">博客中国</a>
+								<a href="http://www.zhongchou.com/search/lid-10525" class="site_ALink siteIlB_item" target="_blank">出版</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 14%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥5789</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">172</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">14%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-720329" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/598322837f4591a_t9_1280x1156_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-720329" class="siteCardICH3" title="创梦之队 F1 in Schools 2017马来西亚国际青少年科技挑战赛" target="_blank">创梦之队 F1 in Schools 2017马来西亚国际青少年科技挑战赛</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">作为F1 in Schools中国赛区的冠军，我们坚信，在大家的鼓励支持和慷慨赞助下，我们一定会在9月21日马来西亚世界大奖赛中再续辉煌！为国争光！</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-98267" class="site_ALink siteIlB_item" target="_blank">F1在学校</a>
+								<a href="http://www.zhongchou.com/search/lid-103022" class="site_ALink siteIlB_item" target="_blank">创梦之队</a>
+								<a href="http://www.zhongchou.com/search/lid-103023" class="site_ALink siteIlB_item" target="_blank">青少年科技</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 27%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥13091</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">153</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">27%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-728089" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59c35731671c51a_t9_640x480_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-728089" class="siteCardICH3" title="《回不去的青春》 姚广军/著  单价38元" target="_blank">《回不去的青春》 姚广军/著  单价38元</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">让我们共同分享自己的收获与感悟，理想与抱负，思想与文化，成为具有影响力的名家。我们诚邀专栏作家一起共筑这伟大的理想，创建《博客中国名家书库》。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-96303" class="site_ALink siteIlB_item" target="_blank">博客中国</a>
+								<a href="http://www.zhongchou.com/search/lid-10525" class="site_ALink siteIlB_item" target="_blank">出版</a>
+								<a href="http://www.zhongchou.com/search/lid-17533" class="site_ALink siteIlB_item" target="_blank">诗集</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 16%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥5795</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">151</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">16%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-725015" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59aac53db5d881a_t9_1260x945_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-725015" class="siteCardICH3" title="拍了四年短片后，这群年轻人决定干票大的——公路电影《凛冬消逝》制作经费众筹" target="_blank">拍了四年短片后，这群年轻人决定干票大的——公路电影《凛冬消逝》制作经费众筹</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">本片为广东工业大学数字媒体艺术专业毕业作品，导演马奔腾为该系影视制作方向学生，主创团队年轻而老练，誓打造一部低成本商业文艺相结合的长片电影。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-440000" class="site_ALink siteIlB_item" target="_blank">广东</a>
+								<a href="http://www.zhongchou.com/search/ciid-440100" class="site_ALink siteIlB_item" target="_blank">广州</a>
+
+								<a href="http://www.zhongchou.com/search/lid-103567" class="site_ALink siteIlB_item" target="_blank">回归成长</a>
+								<a href="http://www.zhongchou.com/search/lid-36982" class="site_ALink siteIlB_item" target="_blank">荒诞</a>
+								<a href="http://www.zhongchou.com/search/lid-27643" class="site_ALink siteIlB_item" target="_blank">黑色幽默</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 34%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥19946</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">139</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">34%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-728112" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59c36e4c6810e1a_t9_640x480_thumb_245x184.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-728112" class="siteCardICH3" title="《不许提--左拾遗诗选》 左拾遗/著  单价39元" target="_blank">《不许提--左拾遗诗选》 左拾遗/著  单价39元</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">让我们共同分享自己的收获与感悟，理想与抱负，思想与文化，成为具有影响力的名家。我们诚邀专栏作家一起共筑这伟大的理想，创建《博客中国名家书库》。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-110000" class="site_ALink siteIlB_item" target="_blank">北京</a>
+
+								<a href="http://www.zhongchou.com/search/lid-17533" class="site_ALink siteIlB_item" target="_blank">诗集</a>
+								<a href="http://www.zhongchou.com/search/lid-102656" class="site_ALink siteIlB_item" target="_blank">博客中</a>
+								<a href="http://www.zhongchou.com/search/lid-10525" class="site_ALink siteIlB_item" target="_blank">出版</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 14%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥5292</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">131</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">14%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-728133" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59c38a0bd7fc91a_t9_750x555_thumb_245x184.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-728133" class="siteCardICH3" title="一本可以听的音乐日历" target="_blank">一本可以听的音乐日历</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">2018年的每一天，在音乐中享受生活，记录人生！</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-310000" class="site_ALink siteIlB_item" target="_blank">上海</a>
+
+								<a href="http://www.zhongchou.com/search/lid-14" class="site_ALink siteIlB_item" target="_blank">音乐</a>
+								<a href="http://www.zhongchou.com/search/lid-103814" class="site_ALink siteIlB_item" target="_blank">2018</a>
+								<a href="http://www.zhongchou.com/search/lid-42376" class="site_ALink siteIlB_item" target="_blank">日历</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 6%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥5567</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">128</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">6%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-723481" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59b253248b9ba1a_t9_2400x1800_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-723481" class="siteCardICH3" title="《小东篱》：让你的灵魂不再孤寂" target="_blank">《小东篱》：让你的灵魂不再孤寂</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">心物交融，方得美好。一个醉心于传统文化世界里的女子需要你的支持，她会做得更好。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-370000" class="site_ALink siteIlB_item" target="_blank">山东</a>
+								<a href="http://www.zhongchou.com/search/ciid-371100" class="site_ALink siteIlB_item" target="_blank">日照</a>
+
+								<a href="http://www.zhongchou.com/search/lid-5431" class="site_ALink siteIlB_item" target="_blank">传统文化</a>
+								<a href="http://www.zhongchou.com/search/lid-11491" class="site_ALink siteIlB_item" target="_blank">收藏</a>
+								<a href="http://www.zhongchou.com/search/lid-22918" class="site_ALink siteIlB_item" target="_blank">散文</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 100%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥23833</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">125</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">120%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ssCardItem">
+					<a href="http://www.zhongchou.com/deal-show/id-722200" class="siteCardItemImgA souSuo" target="_blank">
+						<img src="picture/59951347565bf1a_t9_1280x960_thumb_245x184_3.jpg" />
+					</a>
+					<div class="ssCardICBox siteCardICBox">
+						<div class="ssCardICText">
+							<h3>
+				<a href="http://www.zhongchou.com/deal-show/id-722200" class="siteCardICH3" title="iGEM2017 BGIC-UNION团队——试纸上的肺癌检测" target="_blank">iGEM2017 BGIC-UNION团队——试纸上的肺癌检测</a>
+			</h3>
+							<p class="siteCardIC_p souSuo">我们将用合成生物学的方法合成比以往更为快捷有效的肺癌基因检测系统，需要您的资助，带去iGEM的大会，也带给这个日新月异的世界。</p>
+						</div>
+						<div class="siteCardFBox">
+
+							<div class="siteCardFLabelBox siteIlB_box">
+								<a href="http://www.zhongchou.com/search/prid-440000" class="site_ALink siteIlB_item" target="_blank">广东</a>
+								<a href="http://www.zhongchou.com/search/ciid-440300" class="site_ALink siteIlB_item" target="_blank">深圳</a>
+
+								<a href="http://www.zhongchou.com/search/lid-9652" class="site_ALink siteIlB_item" target="_blank">中学生</a>
+								<a href="http://www.zhongchou.com/search/lid-95985" class="site_ALink siteIlB_item" target="_blank">基因工程</a>
+								<a href="http://www.zhongchou.com/search/lid-14452" class="site_ALink siteIlB_item" target="_blank">癌症</a>
+							</div>
+
+							<div class="siteCardRatio">
+								<div class="siteCardRatioInner" style="width: 27%;"></div>
+							</div>
+							<div class="siteCardFData">
+								<div class="ftDiv">
+									<p class="ftP">￥8100</p>
+									<p class="scP">已筹款</p>
+								</div>
+								<div class="scDiv">
+									<p class="ftP">111</p>
+									<p class="scP">支持数</p>
+								</div>
+								<div class="thDiv">
+									<p class="ftP">27%</p>
+									<p class="scP">筹款进度</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 卡片列表 end -->
+
+		<!-- 网站分页 begin -->
+		<div class="mainInnerBox">
+			<div class="souSuoPageBox">
+				<div id="page" class="sitePageBox">
+
+				</div>
+			</div>
+		</div>
+		<!-- 网站分页 end -->
+
+		<!-- 成功案例 end -->
+		<!-- 网站Footer begin -->
+
+		<div class="SiteGoTopBox">
+			<a href="javascript:;" class="btn_ALink" id="SiteGoTopBtn"></a>
+		</div>
+		<div class="siteFooterBox">
+			<div class="mainInnerBox">
+				<div class="siteMFooter">
+					<div class="siteMFooterABox">
+						<a href="http://www.zhongchou.com/help-index" rel="nofollow" class="site_hoverCss3A" target="_blank">关于我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-contact" rel="nofollow" class="site_hoverCss3A" target="_blank">联系我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-term" rel="nofollow" class="site_hoverCss3A" target="_blank">服务协议</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-specification" rel="nofollow" class="site_hoverCss3A" target="_blank">项目发起规范</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-license" rel="nofollow" class="site_hoverCss3A" target="_blank">公司资质</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-center" class="site_hoverCss3A" target="_blank">帮助中心</a>
+						<!--					<a href="-->
+						<!--" class="site_hoverCss3A" target="_blank">合作专区</a>-->
+					</div>
+					<!--<div class="siteMFooter_gzwmBox siteIlB_box">
+					<span class="siteIlB_item">关注我们:</span>
+					<a href="http://e.weibo.com/zhongchouwang2013" rel="nofollow" class="wb siteIlB_item" target="_blank"></a>
+					<a href="http://user.qzone.qq.com/2357291729" rel="nofollow" class="qq siteIlB_item" target="_blank"></a>
+					<a href="http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BC%97%E7%AD%B9%E7%BD%91" rel="nofollow" class="tb siteIlB_item" target="_blank"></a>
+					<a href="http://www.douban.com/people/zhongchou_cn/" rel="nofollow" class="db siteIlB_item" target="_blank"></a>
+				</div>-->
+				</div>
+			</div>
+			<div class="siteBFooter">
+				<p class="siteBFooter_p">©2015 北京网信众筹网络科技有限公司 zhongchou.com 版权所有 京ICP证150145号 | 出版物经营许可证编号新出发（京）批字第直140141号 | 食品流通许可证 编号：SP1101051410311599 | 京公网安备11010502026064</p>
+			</div>
+		</div>
+		<!-- 网站Footer end -->
+		<script type="text/javascript" src="js/baseClass.js"></script>
+		
+		<script>
+			
+			//分页
+
+			$("#page").paging({
+				pageNo: 1,
+				totalPage: 9,
+				totalSize: 300,
+				callback: function(num) {
+					alert(num);
+				}
+			})
+		</script>
+	</body>
+
+</html>

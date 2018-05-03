@@ -1,0 +1,89 @@
+
+.form-item em {
+    color: red;
+}
+
+.launchSelect .form-control {
+    border: 0;
+    width: 100%;
+    outline: 0;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    line-height: 100%;
+}
+
+#preview {
+
+    position: relative;
+    float: left;
+    margin-left: 10px;
+
+}
+
+#preview img, .img {
+    width: 55px;
+    height: 55px;
+}
+
+#imgUpload .fileUp {
+    background: #50abf2;
+    cursor: pointer;
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 10px;
+
+}
+
+#imgUpload .chooseImg {
+    width: 0;
+    height: 0;
+    border: 0;
+    outline: 0;
+    display: none;
+    cursor: pointer;
+}
+
+#fileArea {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile-1 + label {
+    width: 75px;
+    height: 30px;
+    line-height: 30px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 15px;
+    color: #f1e5e6;
+    background-color: #007acc;
+}
+.mycol-space10{
+	margin-left: 10px;
+}
+#preView{
+	display: block;
+	width: 100px;height: 100px;
+	margin: 0 auto;
+}
+.error{
+	color: red;
+}

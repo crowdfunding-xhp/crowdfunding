@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>发起众筹</title>
+		<link rel="shortcut icon" type="image/png" href="http://zcs3.ncfstatic.com/v3/static/images/icon/title.png?v=" />
+		<link rel="stylesheet" href="css/reset.css">
+		<!--<link rel="stylesheet" href="css/launch-type.css">-->
+		<link rel="stylesheet" href="css/main.css">
+
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css">
+
+		<script src="js/jquery-2.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
+		<link rel="stylesheet" href="css/bwizard.min.css">
+		<link rel="stylesheet" href="layui/css/layui.css" />
+		<script src="js/pdata.js"></script>
+		<!--本页添加的css-->
+		<link rel="stylesheet" href="css/fqzc.css">
+
+		<!--登录-->
+		<script src="js/login/main.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/login/myLogin.js"></script>
+
+		<link rel="stylesheet" href="css/login/main.css">
+		<link rel="stylesheet" href="css/login/style.css">
+
+		<script type="text/javascript" src="js/raise.js"></script>
+		<!--layui-->
+		<script src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.extend.js"></script>
+		<!--权限检查-->
+		<script type="text/javascript" src="js/authorityCheck.js"></script>
+
+	</head>
+
+	<body>
+		<!-- 网站header begin -->
+		<div class="siteMTopBox">
+			<div class="mainInnerBox clearfix relative">
+				<a href="index.html" class="siteMIndexA">
+					<img src="images/zcw-logo.png" />
+				</a>
+				<div class="siteHNavItem">
+					<a href="index.html" class="siteHNavItemA">首&nbsp;&nbsp;页</a>
+				</div>
+
+				<!-- 登录状态 begin -->
+				<div class="siteHCountBox" id="isLogin">
+					<div class="index-avatar fl">
+						<img name="uimage" alt="头像"><i></i>
+					</div>
+					<div class="siteHCountInner">
+						<!-- <a href="/zc/#/user-center/reward-order" class="grzx btn_ALink" target="_self">个人中心</a> -->
+						<input type="hidden" id="Uid" name="Uid">
+						<a href="userMessage.html" class="nickname" target="_blank"></a>
+						<!--
+                        <a href="" class="wdlc btn_ALink" target="_blank"><i></i>
+							<font>我的理财</font>
+						</a>
+						-->
+						<a href="userMessage.html" class="guanzhu siteIlB_item btn_ALink" target="_blank"><i></i>个人中心<b></b></a>
+						<a href="myorders.html" class="wddd btn_ALink" target="_self"><i></i>我的订单</a>
+						
+						<a href="projManage.html" class="wdfq btn_ALink" target="_self"><i></i>我的发起</a>
+						<!--<a href="" class="wdhb btn_ALink" target="_self"><i></i>我的红包</a>
+						<a href="" class="xiaoxi siteIlB_item btn_ALink" target="_blank"><i></i>消息<b ng-bind="user.commentsNum+user.letterNum+user.systemMessNum"></b></a>
+						<a href="" class="sz btn_ALink" target="_self"><i></i>设置</a>-->
+						<a href="javascript:;" class="quit btn_ALink"><i></i>退出</a>
+
+						<!--							<a href="-->
+						<!--" class="quit btn_ALink"><i></i>退出</a>-->
+					</div>
+				</div>
+				<a href="projManage.html" class="wdfq btn_ALink my-zc fr glzc" target="_blank"><i></i>管理众筹</a>
+				<!-- 登录状态 end -->
+
+			</div>
+		</div>
+
+		<!-- 网站header end -->
+
+		<form action="" method="post" class="layui-form" id="fromVal" enctype="multipart/form-data">
+			<div id="wizard" class="basic-width clearfix">
+
+				<ul class="bwizard-steps-ul" style="width: 623px;">
+					<li class="item" style="width: 207px;">基本信息</li>
+					<li style="width: 207px;">项目信息</li>
+					<li style="width: 207px;">详细描述</li>
+					<!--<li>回报设置</li>-->
+				</ul>
+				<div class="basic-width basic-style clearfix">
+					<div class="plr204">
+						<div class="basic-tit clearfix">
+							<h2 style="text-align: center;">请填写基本信息</h2>
+						</div>
+						<div class="identity-type" id="identity-type">
+							<!--个人 start-->
+							<div class="identity-type-bd" style="display: block;">
+								<!--姓名-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label layui-col-md2">姓名</label>
+									<div class="layui-input-inline-block layui-col-md7">
+										<input type="text" name="paccountName" required lay-filter="name" placeholder="请输入姓名" autocomplete="off" class="layui-input username" data-valid="valid" value="输入中文姓名(需与结算时的银行卡开户名一致)">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3  mycol-space10 tips"></div>
+								</div>
+								<!--身份证-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label layui-col-md2">身份证</label>
+									<div class="layui-input-inline-block layui-col-md7">
+										<input type="text" name="pidentify" required placeholder="二代身份证，输入数字或字母" autocomplete="off" class="layui-input" data-valid="valid" value="二代身份证，输入数字或字母">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips "></div>
+								</div>
+
+								<!--手机号-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label layui-col-md2">手机</label>
+									<div class="layui-input-inline-block layui-col-md7">
+										<input type="text" name="paccountTel" required placeholder="手机号，输入纯数字，11位数字" autocomplete="off" class="layui-input" data-valid="valid" value="手机号，输入纯数字，11位数字">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips "></div>
+								</div>
+
+								<!--省市县三级联动-->
+								<div class="layui-form-item layui-row pro_city_area">
+									<input type="hidden" name="ploc" class="programJungle" autocomplete="off" />
+									<label class="layui-form-label layui-col-md2">城市</label>
+									<div class="layui-input-inline-block layui-col-md3">
+										<select name="input_province" lay-filter="input_province" class="input_province">
+										</select>
+									</div>
+									<div class="layui-input-inline-block layui-col-md3 mycol-space10">
+										<select name="input_city" lay-filter="input_city" class="input_city">
+										</select>
+									</div>
+									<div class="layui-input-inline-block layui-col-md3 mycol-space10">
+										<select name="input_area" lay-filter="input_area" class="input_area">
+										</select>
+									</div>
+									<div class="layui-form-mid layui-word-aux mycol-space10 tips "></div>
+								</div>
+
+							</div>
+							<!--个人 end-->
+						</div>
+
+						<div style="display: block;">
+							<!--选择你要创建的项目类型 个人 start-->
+							<div class="basic-tit clearfix">
+								<h2 style="text-align: center;">选择你要创建的项目类型</h2>
+							</div>
+
+							<div class="pro-type">
+								<a data-val="1" class="cur">公益</a>
+								<a data-val="2" class="">农业</a>
+								<a data-val="3" class="">出版</a>
+								<a data-val="4" class="">娱乐</a>
+								<a data-val="5" class="">艺术</a>
+								<a data-val="6" class="">其他</a>
+								<input type="hidden" name="pcid">
+							</div>
+						</div>
+						<!--选择平台服务内容 end-->
+					</div>
+				</div>
+
+				<div class="basic-width basic-style clearfix">
+					<div class="plr65">
+						<div class="basic-tit clearfix">
+							<h2>创建你的项目信息</h2>
+						</div>
+						<div class="create-con clearfix">
+							<!--创建你的项目信息左侧 start-->
+							<div class="create-pro">
+
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label">上传封面</label>
+									<div id="imgUpload">
+										<div id="preview"></div>
+										<div id="fileArea">
+											<label class="fileUp" for="chooseImg">选择文件</label>
+											<input type="file" accept="image/*" lay-filter='chooseImg' name="pimage" class="chooseImg" id="chooseImg" onchange="preview(this)" value="选择文件">
+										</div>
+										<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips "></div>
+										<div style="clear:both;"></div>
+									</div>
+
+								</div>
+
+								<!--项目标题-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label">项目标题</label>
+									<div class="layui-input-inline-block layui-col-md6">
+										<input type="text" name="pname" required placeholder="给自己的项目取个名字吧！不要超过40个汉字哦~" autocomplete="off" class="layui-input" data-valid="valid" value="给自己的项目取个响亮的名字吧！注意不要超过40个汉字哦~">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips "></div>
+								</div>
+
+								<!--筹款目的-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label">筹款目的</label>
+									<div class="layui-input-inline-block layui-col-md6">
+										<textarea placeholder="请输入内容" name="pcontent" value="请输入内容" data-valid="valid" class="layui-textarea"></textarea>
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips "></div>
+								</div>
+
+								<!--筹款时间-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label">筹资时间</label>
+									<div class="layui-input-inline-block layui-col-md6">
+										<input type="text" name="pdate" id="pdate" required placeholder="点击选择筹资时间" class="layui-input" data-valid="valid" value="点击选择筹资时间">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips"></div>
+								</div>
+
+								<!--筹资金额-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label">筹资金额</label>
+									<div class="layui-input-inline-block layui-col-md6">
+										<input type="text" name="ptargetMoney" required placeholder="注意！金额单位为 元" autocomplete="off" class="layui-input money" data-valid="valid" value="注意！金额单位为 元">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips">元</div>
+								</div>
+
+								<!--筹资天数-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label">筹资天数</label>
+									<div class="layui-input-inline-block layui-col-md6">
+										<input type="text" name="praiseDays" required placeholder="输入你要筹资时间周期，10~59天！" autocomplete="off" class="layui-input" data-valid="valid" value="输入你要筹资时间周期，10~59天！">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips">天</div>
+								</div>
+
+								<!--自定义标签-->
+								<div class="layui-form-item layui-row">
+									<label class="layui-form-label">自定义标签</label>
+									<div class="layui-input-inline-block layui-col-md6">
+										<input type="text" name="ptags" required placeholder="个性标签" autocomplete="off" class="layui-input" data-valid="valid" value="个性标签">
+									</div>
+									<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips"></div>
+									<div class="layui-col-md12 layui-col-lg-offset2" style="color: #999;">给你的项目设置一些个性标签，让用户更容易搜索到；标签之间用空格隔开！</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="plr204">
+						<div class="basic-tit clearfix">
+							<h2 style="text-align: center;">详细描述一下你的情况</h2>
+						</div>
+
+						<div class="text-con-tit tr">
+						</div>
+
+						<!--标题-->
+						<div class="layui-form-item layui-row">
+							<label class="layui-form-label">标题</label>
+							<div class="layui-input-inline-block layui-col-md6">
+								<input type="text" name="pdescripTitle" required placeholder="标题，少于30字" autocomplete="off" class="layui-input" data-valid="valid" value="标题，少于30字">
+							</div>
+							<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips">30 </div>
+						</div>
+
+						<!--详细描述-->
+						<div class="layui-form-item layui-row">
+							<label class="layui-form-label">详细描述</label>
+							<div class="layui-input-inline-block layui-col-md6">
+								<textarea name="pdescripCont" placeholder="请详细描述你的相关情况，可能会更容易筹到资金哦！" value="请详细描述你的相关情况，可能会更容易筹到资金哦！" data-valid="valid" class="layui-textarea"></textarea>
+							</div>
+							<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<script src="./bootstrap/js/bootstrap.min.js"></script>
+		<script src="./js/bwizard.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+            $(document).ready(function () {
+                var userInfo = $.cookie("userInfo");
+                if (userInfo) {
+                    userInfo = eval("(" + userInfo + ")");
+                    $("[name=uimage]").attr("src", userInfo.uimage);
+                }
+                $("#wizard").bwizard();
+                $(".pager").append("<li><input type='submit' class='layui-btn' lay-filter='raise_submit'  id='raise_submit' style='height: 40px;margin:0 0 5px 30px'  value='立即提交'></li>");
+            })
+		</script>
+	</body>
+
+</html>

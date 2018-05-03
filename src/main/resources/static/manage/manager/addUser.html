@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../js/manager/jquery.validate.js">
+		</script>
+		<script type="text/javascript" src="../js/manager/jquery.validate.messages_cn.js">
+		</script>
+
+		<style type="text/css">
+			span .error {
+				color: red;
+				font-size: 12px;
+				padding-left: 85px
+			}
+		</style>
+		<title>无标题文档</title>
+		<link href="../css/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			$(function() {
+				$("#addForm").validate({
+					/*自定义验证规则*/
+					submitHandler: function(form) {
+
+						$.post("addUser.do", $("#addForm").serialize(), function(data) {
+							alert("添加成功 ");
+						});
+
+						return false;
+					},
+					rules: {
+						Uid: {
+							required: true,
+							number: true,
+							minlength: 1,
+							maxlength: 10
+						},
+						Unickname: {
+							required: true,
+							minlength: 3,
+							maxlength: 10
+						},
+						Uemail: {
+							required: true,
+							email: true
+						},
+						Uphone: {
+							required: true,
+							phone: true
+						},
+						Uname: {
+							required: true,
+							minlength: 3,
+							maxlength: 10
+						},
+						Upassword: {
+							required: true,
+							rangelength: [3, 10]
+						},
+						confirm_password: {
+							equalTo: "#Upassword"
+						},
+						UidNumber: {
+							required: true,
+							isIdCardNo: true
+						}
+					},
+					/*错误提示位置*/
+					errorPlacement: function(error, element) {
+						error.appendTo(element.siblings("span"));
+					},
+					messages: {
+						Uid: {
+							required: "请输入用户编号"
+						},
+						Unickname: {
+							required: "请输入用户昵称"
+						},
+						Uemail: {
+							required: "请输入邮箱"
+						},
+						Upassword: {
+							required: "请输入密码"
+						},
+						confirm_password: {
+							required: "请输确认密码"
+						},
+						Uphone: {
+							required: "请输入手机号"
+						}
+					}
+				});
+
+				/*$("input[name='btn']").click(function() {
+
+				});*/
+
+				// 上传图片
+				$("#fileUpload").change(function() {
+
+					var formData = new FormData($("#myImage")[0]);
+					$.ajax({
+						url: 'uploadImage.do',
+						type: 'POST',
+						data: formData,
+						async: false,
+						cache: false,
+						contentType: false,
+						processData: false,
+						success: function(returndata) {
+
+							// 将返回的路径写到隐藏域
+							$("#Uimage").val(returndata);
+							// 显示图片
+							$("#showImg").attr("src", "../" + returndata);
+
+						},
+						error: function(returndata) {
+							alert("false");
+							alert(returndata);
+						}
+					});
+				});
+
+			});
+		</script>
+
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				jQuery.validator.addMethod("isIdCardNo", function(value, element) {
+					return this.optional(element) || isIdCardNo(value);
+				}, "请正确输入您的身份证号码");
+			});
+			//增加身份证验证
+			function isIdCardNo(num) {
+				var factorArr = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1);
+				var parityBit = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
+				var varArray = new Array();
+				var intValue;
+				var lngProduct = 0;
+				var intCheckDigit;
+				var intStrLen = num.length;
+				var idNumber = num;
+				// initialize
+				if((intStrLen != 15) && (intStrLen != 18)) {
+					return false;
+				}
+				// check and set value
+				for(i = 0; i < intStrLen; i++) {
+					varArray[i] = idNumber.charAt(i);
+					if((varArray[i] < '0' || varArray[i] > '9') && (i != 17)) {
+						return false;
+					} else if(i < 17) {
+						varArray[i] = varArray[i] * factorArr[i];
+					}
+				}
+				if(intStrLen == 18) {
+					//check date
+					var date8 = idNumber.substring(6, 14);
+					if(isDate8(date8) == false) {
+						return false;
+					}
+					// calculate the sum of the products
+					for(i = 0; i < 17; i++) {
+						lngProduct = lngProduct + varArray[i];
+					}
+					// calculate the check digit
+					intCheckDigit = parityBit[lngProduct % 11];
+					// check last digit
+					if(varArray[17] != intCheckDigit) {
+						return false;
+					}
+				} else { //length is 15
+					//check date
+					var date6 = idNumber.substring(6, 12);
+					if(isDate6(date6) == false) {
+						return false;
+					}
+				}
+				return true;
+			}
+
+			function isDate6(sDate) {
+				if(!/^[0-9]{6}$/.test(sDate)) {
+					return false;
+				}
+				var year, month, day;
+				year = sDate.substring(0, 4);
+				month = sDate.substring(4, 6);
+				if(year < 1700 || year > 2500) return false
+				if(month < 1 || month > 12) return false
+				return true
+			}
+
+			function isDate8(sDate) {
+				if(!/^[0-9]{8}$/.test(sDate)) {
+					return false;
+				}
+				var year, month, day;
+				year = sDate.substring(0, 4);
+				month = sDate.substring(4, 6);
+				day = sDate.substring(6, 8);
+				var iaMonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+				if(year < 1700 || year > 2500) return false
+				if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) iaMonthDays[1] = 29;
+				if(month < 1 || month > 12) return false
+				if(day < 1 || day > iaMonthDays[month - 1]) return false
+				return true
+			}
+		</script>
+
+	</head>
+
+	<body>
+		<div class="formbody">
+			<div class="formtitle">
+				<p>基本信息</p>
+			</div>
+			<form id="myImage" enctype="multipart/form-data" action="uploadImg.do" method="post">
+				<ul class="forminfo">
+					<li>
+						<p>图片</p> <input type="file" name="fileUpload" id="fileUpload" /></li>
+				</ul>
+			</form>
+			<img alt="" src="" id="showImg" width="150px" height="150px" />
+			<form id="addForm">
+				<ul class="forminfo">
+					<li>
+						<p>用户编号</p><input type="text" id="Uid" name="Uid" class="dfinput" /><i>长度小于10</i><span></span></li>
+					<li>
+						<p>用户昵称</p><input type="text" id="Unickname" name="Unickname" class="dfinput" /><i>长度3-10</i><span></span></li>
+					<li>
+						<p>用户密码</p><cite><input type="password" id="Upassword"  name="Upassword"  class="dfinput" /><i>长度3-10</i><span></span></cite></li>
+					<li>
+						<p>确认密码</p><cite><input type="password" id="confirm_password"  name="confirm_password"  class="dfinput" /><span></span></cite></li>
+					<li>
+						<p>用户名称</p><input type="text" id="Uname" name="Uname" class="dfinput" /><i>长度3-10</i><span></span></li>
+					<li>
+						<p>用户性别</p><input type="radio" check="checked" name="Usex" value="男"/>男<input type="radio" name="Usex" value="女"/>女</li>
+					<li>
+						<p>用户身份证</p><input type="text" name="UidNumber" class="dfinput" /><span></span></li>
+					<li>
+						<p>用户电话</p><input type="text" id="Uphone" name="Uphone" class="dfinput" /><span></span></li>
+					<li>
+						<p>用户邮箱</p><input type="text" name="Uemail" class="dfinput" /><span></span></li>
+					<li>
+						<p></p><input type="hidden" name="Uimage" id="Uimage" class="dfinput" /></li>
+					<li>
+						<p>&nbsp;</p><input id="btn" type="submit" name="btn" value="添加" class="btn" /></li>
+				</ul>
+			</form>
+		</div>
+		<div style="display: none">
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+
+
+<title>无标题文档</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+
+$(function(){
+	alert("function");
+	$("input[name='btn']").click(function(){
+		$.post("addUser.do",$("#addForm").serialize(),function(data){
+			alert(data);
+		});
+	});
+		// 上传图片
+		$("#fileUpload").change(function() {
+			alert("ajax");
+			var formData = new FormData($("#myImage")[0]);
+			$.ajax({
+				url : 'uploadImage.do',
+				type : 'POST',
+				data : formData,
+				async : false,
+				cache : false,
+				contentType : false,
+				processData : false,
+				success : function(returndata) {
+					alert("success");
+					alert(returndata);
+					// 将返回的路径写到隐藏域
+					$("#Uimage").val(returndata);
+					// 显示图片
+					$("#showImg").attr("src", returndata);
+					
+				},
+				error : function(returndata) {
+					alert("false");
+					alert(returndata);
+				}
+			});
+		});
+	});
+
+
+
+</script>
+</head>
+<body>
+	<div class="formbody">
+		<div class="formtitle">
+			<span>基本信息</span>
+		</div>
+		<form id="myImage" enctype="multipart/form-data" action="uploadImg.do" method="post">
+			<ul class="forminfo">
+			<li><label>图片</label>	<input type="file" name="fileUpload" id="fileUpload" /></li>
+				</ul>
+		</form>
+	<img alt="" src="" id="showImg" width="150px" height="150px"/>
+		<form id="addForm">
+		
+			<ul class="forminfo">
+				<li><label>用户编号</label><input type="text"  id="Uid" name="Uid"
+					class="dfinput" /><i>标题不能超过30个字符</i></li>
+				<li><label>用户昵称</label><input type="text"  id="Unickname" name="Unickname"
+					class="dfinput" /><i>多个关键字用,隔开</i></li>
+				<li><label>用户密码</label><cite><input type="password" id="Upassword"  name="Upassword"  class="dfinput" /></cite></li>
+				<li><label>用户名称</label><input type="text"  id="Uname" name="Uname"
+					class="dfinput" /></li>
+				<li><label>用户性别</label><input type="radio" check="checked" name="Usex" value="男"
+					class="dfinput" />男<input type="radio"  name="Usex" value="女"
+					class="dfinput" />女</li>
+				<li><label>用户身份证</label><input type="text" name="UidNumber"
+					class="dfinput" /></li>
+				<li><label>用户电话</label><input type="text" name="Uphone"
+					class="dfinput" /></li>
+				<li><label></label><input type="hidden" name="Uimage" id="Uimage"
+					class="dfinput" /></li>
+				<li><label>&nbsp;</label><input id="btn" type="button" name="btn" value="添加" class="btn"
+					/></li>
+			</ul>
+		</form>
+	</div>
+	<div style="display: none">
+	</div>
+</body>
+</html>

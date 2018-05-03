@@ -1,0 +1,29 @@
+server:
+  port: 8090
+spring:
+  thymeleaf:
+      prefix: classpath:/template/
+      suffix: .html
+      mode: LEGACYHTML5
+      encoding: UTF-8
+      content-type: text/html
+      cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/crowdfunding
+    username: root
+    password: 1234
+mybatis:
+  type-aliases-package: com.xhp.crowdfunding.entity
+  mapperLocations: classpath:mapper/**/*.xml
+logging:
+  level:
+    com.octopus.mybatistest.dao: DEBUG
+ftp:
+  server:
+    ip: #ftp IP
+    user: #ftp用户
+    pass: #ftp密码
+    path: #ftp路径
+    http:
+      prefix: http://images.yuchu.ac.cn/

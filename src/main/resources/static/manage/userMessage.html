@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html id='ng-app'>
+
+	<head>
+		<title title>众筹网-中国专业的一站式综合众筹融资服务平台</title>
+		<meta charset="utf-8" />
+
+		<meta name="keywords" content="众筹,融资,众筹平台,创业融资" />
+		<meta name="description" content="众筹网是中国专业的一站式综合众筹融资服务平台，专业为有梦想、有创意、有项目的朋友提供募资、投资、孵化、运营一站式综合众筹服务，协助您实现自己的创业梦想。好平台，好起点，尽在众筹网！" />
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=11">
+		<link rel="shortcut icon" type="image/png" href="http://zcs3.ncfstatic.com/v3/static/images/icon/title.png?v=" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<script type="text/javascript" src="js/common.js"></script>
+		<!-- <meta property="qc:admins" content="255367746162076730756375" /> -->
+		<script type="text/javascript" src="js/sso-lib.js"></script>
+		<!--layui使用-->
+		<script src="layui/layui.js"></script>
+		<script src="js/jquery-2.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
+		<link rel="stylesheet" href="css/bwizard.min.css">
+		<link rel="stylesheet" href="layui/css/layui.css" />
+		<!--登录-->
+		<script src="js/login/main.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/login/myLogin.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+		<link rel="stylesheet" href="css/login/main.css">
+		<link rel="stylesheet" href="css/login/style.css">
+		<script>
+			$(window).ready(function() {
+				var userInfo = $.cookie("userInfo");
+				if(userInfo) {
+					userInfo = eval("(" + userInfo + ")");
+				} else {
+					window.location.href = "index.html";
+				}
+				$("input[name=uid]").val(userInfo.uid);
+				$("[name=uimage]").attr("src", userInfo.uimage);
+				$("input[name=unickname]").val(userInfo.unickname);
+				$("input[name=usex]:radio").each(function() {
+					if(userInfo.usex == this.value) {
+						this.checked = "checked";
+					}
+				});
+				$("input[name=uphone]").val(userInfo.uphone);
+
+			})
+
+			function preview(file) {
+				var prevDiv = document.getElementById('preview');
+				if(file.files && file.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function(evt) {
+						prevDiv.innerHTML = '<img id="pic" src="' + evt.target.result +
+							'" />';
+					}
+					reader.readAsDataURL(file.files[0]);
+				} else {
+					prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' +
+						file.value + '\'"></div>';
+				}
+			}
+		</script>
+
+	</head>
+
+	<body>
+		<!-- 网站header begin -->
+		<div editStatus="0" class="siteHTopBox" id="siteHTopBox">
+			<div class="mainInnerBox">
+				<div class="siteHtelBox">
+					官方咨询电话<span>000-010-0000</span>
+				</div>
+				<!-- 手机app && 联系电话 begin -->
+				<div class="siteHRight">
+
+					<a href="new-help.html" class="siteHCodeB btn_ALink" target="_blank">帮助中心</a>
+				</div>
+				<!-- 手机app && 联系电话 end -->
+			</div>
+		</div>
+		<div class="siteMTopBox">
+			<div class="mainInnerBox clearfix relative">
+				<a href="index.html" class="siteMIndexA"> <img src="picture/1462795454.png" />
+				</a>
+				<div class="siteHNavBox clearfix">
+					<div class="siteHNavItem">
+						<a href="index.html" class="siteHNavItemA">首&nbsp;&nbsp;页</a>
+					</div>
+				</div>
+
+				<a href="raise.html" class="siteM_fqBtn btn_ALink js-checkLogin"><i></i>发起众筹</a>
+
+				<!-- 登录状态 begin -->
+				<div class="siteHCountBox" id="isLogin">
+					<div class="index-avatar fl">
+						<!--todo-->
+						<img name="uimage" alt="头像"><i></i>
+					</div>
+					<div class="siteHCountInner">
+						<!-- <a href="/zc/#/user-center/reward-order" class="grzx btn_ALink" target="_self">个人中心</a> -->
+						<input type="hidden" id="Uid" name="Uid">
+						<a href="userMessage.html" class="nickname" target="_blank"></a>
+						<!--
+                        <a href="" class="wdlc btn_ALink" target="_blank"><i></i>
+							<font>我的理财</font>
+						</a>
+						-->
+						<a href="userMessage.html" class="guanzhu siteIlB_item btn_ALink" target="_blank"><i></i>个人中心<b></b></a>
+						<a href="myorders.html" class="wddd btn_ALink" target="_self"><i></i>我的订单</a>
+
+						<a href="projManage.html" class="wdfq btn_ALink" target="_self"><i></i>我的发起</a>
+						<!--<a href="" class="wdhb btn_ALink" target="_self"><i></i>我的红包</a>
+						<a href="" class="xiaoxi siteIlB_item btn_ALink" target="_blank"><i></i>消息<b ng-bind="user.commentsNum+user.letterNum+user.systemMessNum"></b></a>
+						<a href="" class="sz btn_ALink" target="_self"><i></i>设置</a>-->
+						<a href="javascript:;" class="quit btn_ALink"><i></i>退出</a>
+
+						<!--							<a href="-->
+						<!--" class="quit btn_ALink"><i></i>退出</a>-->
+					</div>
+				</div>
+				<a href="projManage.html" class="wdfq btn_ALink my-zc fr glzc" target="_blank"><i></i>管理众筹</a>
+				<!-- 登录状态 end -->
+
+			</div>
+		</div>
+
+		<!--搜索框效果-->
+		<!--<script>
+			$(document).ready(function() {
+				var hint = new InputHinter({
+					container: 'search-box',
+					id: "searchInput"
+				});
+				$('#searchBtn').click(function() {
+					var $input = $('#searchInput');
+					//window.location.href = "search-list.html?searchVal=" + hint.encodeKw($.trim($input.val()) || $input.attr('placeholder'));
+
+					var getUrlParam = function(name) {
+						var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+						var r = window.location.search.substr(1).match(reg);
+						if(r != null)
+							return decodeURI(r[2]);
+						return null;
+					}
+					var searchVal = getUrlParam('searchVal');
+
+				});
+				$('#searchInput').focus(function() {
+					setTimeout(function() {
+						$('#search-box').addClass("siteMSearch-focus")
+					}, 1)
+				})
+				$('#searchInput').blur(function() {
+					setTimeout(function() {
+						$('#search-box').removeClass("siteMSearch-focus")
+					}, 1)
+				});
+
+			});
+			var showCode = '';
+		</script>-->
+
+		<!-- 网站header end -->
+		<script type="text/javascript">
+			window.STATIC_VERSION = '1505451026';
+		</script>
+		<script type="text/javascript" src="http://zcs1.ncfstatic.com/v4/uc/js/lib.js?v=1505451026"></script>
+		<script type="text/javascript" src="http://zcs2.ncfstatic.com/v4/uc/js/zc.ucApp.min.js?v=1505451026"></script>
+		<link href="http://zcs5.ncfstatic.com/v4/uc/css/gerenzhongxin.css?v=1505451026" rel="stylesheet" type="text/css">
+
+		<div class="grzxOuterBox">
+			<div class="mainInnerBox clearfix" style="position: relative;">
+				<div class="loading" id="mainloading" style="height: 400px; background-color: white; display: none;"></div>
+				<!-- uiView:  -->
+				<div data-ui-view="" style="min-height: 400px;" ng-element-ready="" class="ng-scope">
+					<div class="grzxLeftBox">
+						<!--<nav>-->
+
+						<!--<span ui-sref=".idcard"><a ng-href="">实名认证</a></span>-->
+
+						<!--</nav>-->
+						<div class="grzxLNavItem" ng-show="!isYSH">
+							<!--<h3>发起中心</h3>-->
+							<h3>项目</h3>
+							<div class="grzxLNav">
+
+								<div class="grzxLNavABox">
+									<a class="site_hoverCssA btn_ALink" href="projManage.html">项目管理</a>
+								</div>
+								<!--</div>-->
+								<!--</div>-->
+								<!--<div class="grzxLNavItem">-->
+								<!--<h3>订单</h3>-->
+
+								<!--<div class="grzxLNav">-->
+								<div class="grzxLNavABox">
+									<a href="myorders.html" class="site_hoverCssA btn_ALink">我的订单</a>
+								</div>
+
+								<!--<div class="grzxLNavABox">-->
+								<!--<a href="javascript:;" ui-sref=".equityOrder" class="site_hoverCssA btn_ALink">股权订单</a>-->
+								<!--</div>-->
+							</div>
+						</div>
+
+						<!--<div class="grzxLNavItem">
+							<h3>消息</h3>
+
+							<div class="grzxLNav">
+								<!--<div class="grzxLNavABox">-->
+						<!--<a href="javascript:;" ui-sref=".topic" class="site_hoverCssA btn_ALink">我的话题</a>-->
+						<!--</div>-->
+						<!--<div class="grzxLNavABox">
+									<a href="mycomments.html" class="site_hoverCssA btn_ALink">我的评论<i class="news_i ng-binding ng-hide">0</i></a>
+								</div>
+							</div>
+						</div>-->
+						<div class="grzxLNavItem">
+							<h3>设置</h3>
+
+							<div class="grzxLNav">
+								<div class="grzxLNavABox">
+									<a href="userMessage.html" target="_blank" class="site_hoverCssA btn_ALink">个人资料</a>
+								</div>
+								<!--<div class="grzxLNavABox">
+									<a href="changePwd.html" class="site_hoverCssA btn_ALink">修改密码</a>
+								</div>
+								<div class="grzxLNavABox">
+									<a href="#/user-center/address" ui-sref=".address" class="site_hoverCssA btn_ALink">收货地址</a>
+								</div>-->
+							</div>
+						</div>
+
+					</div>
+					<div class="grzxRightBox ng-scope">
+						<div class="grzxRTopBox moduleItem">
+							<div class="grzxCountBox clearfix">
+								<div class="ftDiv">
+									<!--<a href="userMessage.html" class="siteCircleBox"><img name="uimage"></a>-->
+								</div>
+								<div class="scDiv">
+									<p class="ftP" name="Unickname">
+										<input readonly="readonly" name="Unickname">
+									</p>
+								</div>
+							</div>
+							<div class="grzxRTRBox clearfix">
+								</a>
+								<a href="projManage.html" class="grzxRTR_ItemA btn_ALink">
+									<!--<p class="ftP ng-binding">0</p>-->
+									<p style="text-align: center; line-height: 84px; font-weight: bold; font-size: 16px;">我的项目</p>
+								</a>
+								<a href="myorders.html" class="grzxRTR_ItemA btn_ALink">
+									<!--<p class="ftP ng-binding"></p>-->
+									<p style="text-align: center; line-height: 84px; font-weight: bold; font-size: 16px;">我的订单</p>
+								</a>
+							</div>
+						</div>
+
+						<!-- ngIf: invitationCode.index>0 -->
+
+						<!-- uiView:  -->
+						<div class="grzxTabBox moduleItem ng-scope" ui-view="">
+							<ul class="grzxTabUl ng-scope" id="grzxTabUl">
+								<li class="grzxTabLi cur">个人信息</li>
+
+							</ul>
+
+							<script>
+								$(function() {
+									$(".submitButton").click(function() {
+										var datas = $("#userform").formSerialize();
+										var options = {
+											url: "UpdateUser.do",
+											type: "post",
+											//											data:datas,
+											success: function(data) {
+												$("#chooseImg").attr("src", "");
+												$("#chooseImg").val("");
+												window.location.reload();
+											}
+										};
+										$("#userform").ajaxForm(options);
+									})
+								})
+							</script>
+
+							<div class="grzlBox">
+								<form action="" id="userform" method="post" enctype="multipart/form-data">
+									<div class="grzxFGBox clearfix">
+										<input type="hidden" class="grzxFGLabel" name="uid" />
+									</div>
+
+									<div class="grzxFGBox clearfix">
+										<div class="layui-form-item layui-row ">
+											<label class="layui-form-label grzxFGLabel" style="width: 105px;">头像：</label>
+											<div class="grzxFGCBox">
+												<div class="grzlCountPic">
+													<div class="grzlCountPicBox siteCircleBox">
+														<style>
+															#preview {
+																float: left;
+															}
+															
+															#preview img {
+																width: 100px;
+																height: 100px;
+															}
+															
+															input[name=uimage] {
+																margin-top: 35px;
+																margin-left: 20px;
+															}
+														</style>
+
+														<div id="imgUpload" style="width: 600px;">
+															<div id="preview"></div>
+															<div id="fileArea">
+																<label class="fileUp" for="chooseImg"></label>
+																<input type="file" accept="image/*" lay-filter='chooseImg' name="uimage" class="chooseImg" id="chooseImg" onchange="preview(this)" value="选择文件">
+															</div>
+															<div class="layui-form-mid layui-word-aux layui-col-md3 mycol-space10 tips "></div>
+															<div style="clear:both;"></div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="grzxFGBox clearfix">
+										<label class="grzxFGLabel">用戶名：</label>
+										<div class="grzxFGCBox sitePHBox">
+											<span> <input type="text"
+											class="grzxInput sitePHInput ng-isolate-scope ng-pristine ng-valid ng-valid-required"
+											name="unickname" placeholder="请输入有效昵称" validation=""
+											required="" valid-type="nickName" error_to="#nickNameError"
+											empty_msg="请输入有效昵称" error_msg="昵称只允许输入4-24位字符"> <span
+											class="sitePHTip">请输入有效昵称</span>
+											</span> <span class="error" id="nickNameError"></span>
+										</div>
+									</div>
+									<div class="grzxFGBox clearfix">
+										<label class="grzxFGLabel">性别：</label>
+										<div class="grzxFGCBox clearfix">
+											<!-- ngRepeat: item in sex -->
+											<label class="grzxFGRadioLabel ng-binding ng-scope"><input
+											type="radio" name="usex" value="男"
+											class="ng-pristine ng-valid">男</label>
+											<!-- end ngRepeat: item in sex -->
+											<label class="grzxFGRadioLabel ng-binding ng-scope"><input
+											type="radio" name="usex" value="女"
+											class="ng-pristine ng-valid">女</label>
+											<!-- end ngRepeat: item in sex -->
+											<label class="grzxFGRadioLabel ng-binding ng-scope"><input
+											type="radio" name="usex" value="保密"
+											class="ng-pristine ng-valid">保密</label>
+											<!-- end ngRepeat: item in sex -->
+										</div>
+									</div>
+
+									<div class="grzxFGBox clearfix">
+										<label class="grzxFGLabel">电话：</label>
+										<div class="grzxFGCBox sitePHBox">
+											<span> <input type="text"
+											class="grzxInput sitePHInput ng-isolate-scope ng-pristine ng-valid ng-valid-required"
+											name="uphone" placeholder="请输入有效电话" validation="" required=""
+											valid-type="nickName" error_to="#nickNameError"
+											empty_msg="请输入有效电话" error_msg="电话只允许输入11位数字"> <span
+											class="sitePHTip">请输入有效电话</span>
+											</span> <span class="error" id="nickNameError"></span>
+										</div>
+									</div>
+									<div class="grzlBtnBox">
+										<p class="grzlErrorTip"></p>
+										<div class="grzlBtnInner clearfix">
+											<input type="submit" value="保存" class="grzlSubmitBtn submitButton">
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<!-- ngIf: invitationCode.index == 1 -->
+							<!-- ngIf: invitationCode.index == 1 -->
+							<!-- ngIf: invitationCode.index == 1 -->
+
+							<!-- ngIf: invitationCode.index > 1 -->
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- 网站Footer begin -->
+			<!--悬浮框-->
+
+			<!--悬浮框 end-->
+
+			<div class="SiteGoTopBox">
+				<a href="javascript:;" class="btn_ALink" id="SiteGoTopBtn"></a>
+			</div>
+			<div class="siteFooterBox">
+				<div class="mainInnerBox">
+					<div class="siteMFooter">
+						<!--<div class="siteMFooterABox">
+						<a href="http://www.zhongchou.com/help-index" rel="nofollow" class="site_hoverCss3A" target="_blank">关于我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-contact" rel="nofollow" class="site_hoverCss3A" target="_blank">联系我们</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-term" rel="nofollow" class="site_hoverCss3A" target="_blank">服务协议</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-specification" rel="nofollow" class="site_hoverCss3A" target="_blank">项目发起规范</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-license" rel="nofollow" class="site_hoverCss3A" target="_blank">公司资质</a><span>|</span>
+						<a href="http://www.zhongchou.com/help-center" class="site_hoverCss3A" target="_blank">帮助中心</a>
+						<!--					<a href="-->
+						<!--" class="site_hoverCss3A" target="_blank">合作专区</a>
+					</div>-->
+						<!--<div class="siteMFooter_gzwmBox siteIlB_box">
+					<span class="siteIlB_item">关注我们:</span>
+					<a href="http://e.weibo.com/zhongchouwang2013" rel="nofollow" class="wb siteIlB_item" target="_blank"></a>
+					<a href="http://user.qzone.qq.com/2357291729" rel="nofollow" class="qq siteIlB_item" target="_blank"></a>
+					<a href="http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BC%97%E7%AD%B9%E7%BD%91" rel="nofollow" class="tb siteIlB_item" target="_blank"></a>
+					<a href="http://www.douban.com/people/zhongchou_cn/" rel="nofollow" class="db siteIlB_item" target="_blank"></a>
+				</div>-->
+					</div>
+				</div>
+				<div class="siteBFooter">
+					<p class="siteBFooter_p">©2017 牛逼哄哄有限公司 47.94.110.76 版权所有 最终解释权归本组所有</p>
+				</div>
+			</div>
+			<!-- 网站Footer end -->
+			<script type="text/javascript" src="js/baseClass.js"></script>
+
+			<script>
+				var isLogin = true;
+				$('.float_win a').click(function() {
+					if(isLogin == true) {
+						$(this).attr('href', 'http://www.zhongchou.com/auth-wxlc');
+					} else {
+						$('.siteH_login.Js-showLogin').click();
+					}
+				});
+			</script>
+	</body>
+
+</html>
